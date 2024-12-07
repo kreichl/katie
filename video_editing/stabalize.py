@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 import os
+from vidstab import VidStab
+
 
 # Directory containing input videos
 input_directory = r"C:\Users\reich\Documents\RealEstateVideos\20241202-Demo-1"
@@ -14,85 +16,38 @@ import numpy as np
 import os
 
 def stabilize_video(input_path, output_path):
-    # Open the video
+
+    # Initialize stabilizer
+    stabilizer = VidStab()
+
+    # Open video capture
     cap = cv2.VideoCapture(input_path)
+
+    # Check if video opened successfully
     if not cap.isOpened():
-        print(f"Error: Unable to open video {input_path}")
-        return
+        print("Error opening video file")
 
     # Get video properties
-    n_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    fps = int(cap.get(cv2.CAP_PROP_FPS))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = cap.get(cv2.CAP_PROP_FPS)
 
-    # Define the codec and create VideoWriter
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    # Define the codec and create VideoWriter object
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
-    # Read the first frame
-    success, prev_frame = cap.read()
-    if not success:
-        print("Error: Unable to read the first frame.")
-        cap.release()
-        return
-
-    prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)
-    transforms = np.zeros((n_frames - 1, 3), np.float32)
-
-    # Compute transformations
-    for i in range(n_frames - 1):
-        success, curr_frame = cap.read()
-        if not success:
-            print(f"Warning: Skipping frame {i}")
+    while True:
+        ret, frame = cap.read()
+        if not ret:
             break
 
-        curr_gray = cv2.cvtColor(curr_frame, cv2.COLOR_BGR2GRAY)
-        prev_pts = cv2.goodFeaturesToTrack(prev_gray, maxCorners=200, qualityLevel=0.01, minDistance=30, blockSize=3)
-        curr_pts, status, _ = cv2.calcOpticalFlowPyrLK(prev_gray, curr_gray, prev_pts, None)
+        # Stabilize the frame
+        stabilized_frame = stabilizer.stabilize_frame(input_frame=frame)
 
-        # Filter valid points
-        idx = np.where(status == 1)[0]
-        if len(idx) < 4:
-            transforms[i] = transforms[i - 1] if i > 0 else [0, 0, 0]
-            continue
-
-        prev_pts = prev_pts[idx]
-        curr_pts = curr_pts[idx]
-
-        # Estimate transformation matrix
-        m, _ = cv2.estimateAffinePartial2D(prev_pts, curr_pts)
-        if m is None:
-            transforms[i] = transforms[i - 1] if i > 0 else [0, 0, 0]
-            continue
-
-        dx, dy, da = m[0, 2], m[1, 2], np.arctan2(m[1, 0], m[0, 0])
-        transforms[i] = [dx, dy, da]
-        prev_gray = curr_gray
-
-    # Smooth transformations
-    trajectory = np.cumsum(transforms, axis=0)
-    smoothed_trajectory = cv2.GaussianBlur(trajectory, (31, 1), 0)
-    difference = smoothed_trajectory - trajectory
-    transforms_smooth = transforms + difference
-
-    # Reset video to first frame
-    cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-
-    # Apply transformations
-    for i in range(n_frames - 1):
-        success, frame = cap.read()
-        if not success:
-            print(f"Warning: Missing frame {i}")
-            break
-
-        dx, dy, da = transforms_smooth[i]
-        m = np.array([[np.cos(da), -np.sin(da), dx],
-                      [np.sin(da),  np.cos(da), dy]])
-        stabilized_frame = cv2.warpAffine(frame, m, (width, height), borderMode=cv2.BORDER_REFLECT)
+        # Write the stabilized frame to the output video
         out.write(stabilized_frame)
 
-    # Release resources
+    # Release video capture and writer
     cap.release()
     out.release()
 
