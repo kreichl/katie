@@ -2,6 +2,13 @@ import cv2
 import numpy as np
 import os
 
+# Directory containing input videos
+input_directory = r"C:\Users\reich\Documents\RealEstateVideos\20241202-Demo-1"
+
+# Create a subfolder for stabilized videos
+output_directory = os.path.join(input_directory, "stabilized")
+os.makedirs(output_directory, exist_ok=True)
+
 def stabilize_video(input_path, output_path):
     # Load the video
     cap = cv2.VideoCapture(input_path)
@@ -54,3 +61,17 @@ def stabilize_video(input_path, output_path):
         dx = m[0, 2]
         dy = m[1, 2]
         da = np
+
+
+# Process all videos in the input directory
+for file_name in os.listdir(input_directory):
+    if file_name.lower().endswith((".mp4", ".mov", ".avi", ".mkv")):
+        input_path = os.path.join(input_directory, file_name)
+        output_name = os.path.splitext(file_name)[0] + "_stabilized.mp4"
+        output_path = os.path.join(output_directory, output_name)
+
+        print(f"Stabilizing {file_name}...")
+        stabilize_video(input_path, output_path)
+        print(f"Saved stabilized video as {output_name}")
+
+print(f"All videos have been stabilized and saved in {output_directory}.")
