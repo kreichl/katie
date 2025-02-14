@@ -1,0 +1,548 @@
+2025-02-14T15:40:14.716Z ACTOR: Pulling Docker image of build KszYlc6RCdMUcI2lJ from repository.
+2025-02-14T15:40:38.752Z ACTOR: Creating Docker container.
+2025-02-14T15:40:39.458Z ACTOR: Starting Docker container.
+2025-02-14T15:40:41.769Z INFO  System info {"apifyVersion":"3.2.6","apifyClientVersion":"2.11.1","crawleeVersion":"3.12.2","osType":"Linux","nodeVersion":"v20.18.2"}
+2025-02-14T15:40:41.854Z input>>>>> {
+2025-02-14T15:40:41.857Z   maxItems: 200,
+2025-02-14T15:40:41.860Z   proxy: { useApifyProxy: true, apifyProxyGroups: [ 'RESIDENTIAL' ] },
+2025-02-14T15:40:41.862Z   startUrls: [
+2025-02-14T15:40:41.865Z     {
+2025-02-14T15:40:41.867Z       url: 'https://www.realtor.com/realestateandhomes-search/Ozaukee-County_WI/type-condo,townhome,single-family-home/nc-hide/price-300000-na',
+2025-02-14T15:40:41.869Z       method: 'GET'
+2025-02-14T15:40:41.870Z     }
+2025-02-14T15:40:41.872Z   ],
+2025-02-14T15:40:41.874Z   maxConcurrency: 10,
+2025-02-14T15:40:41.876Z   minConcurrency: 1,
+2025-02-14T15:40:41.878Z   maxRequestRetries: 100
+2025-02-14T15:40:41.879Z }
+2025-02-14T15:40:41.892Z user is paying:: false
+2025-02-14T15:40:42.031Z user is paying:: false
+2025-02-14T15:40:42.723Z token::: eyJraWQiOiI3MzNhMjk3YWFkNmVmODEwNjJhOWZkOGYwZWEzZGY2ODE5MjNjYzhiMzRlYjczZTk0NGYwNGJjY2Q0NDdmODNhIiwiYWxnIjoiUlM1MTIifQ.eyJpc3MiOiJhY2NvdW50cy5yZWFsdG9yLmNvbSIsImlhdCI6MTczOTU0NzY0MiwiZXhwIjoxNzM5NjM0MDQyLCJhdWQiOiJyZWFsdG9yLmNvbSIsInN1YiI6ImNvbnN1bWVyfDNkMTQ0Y2ViLTg3ZmMtNGYzMC04Yzg4LWQ3NTBhN2Q4ZTFhZCIsImF1dGhvcml6YXRpb24iOiJ1bnByb3ZlbiIsInJkY190dHIiOjE3Mzk1NTEyNDJ9.Qfj005JVdTnMLs3VoMsyaS0EbZnDAQLDUi1fDCnX-9Or_z_MX_KKnYp5e9IaZorEGgi7ItbKW371VYPINCfcS5LcquSXLq7pMBkaRCshdKcDnJ1K3k8s0_zXUblLmHIyyJzWvHFnVx6yDzhglro6N2ZSuUdVHP8l6iGe91pRAIeDngqL0zDdd7axr8YuD5lrv7Va-6MLtjLe33tx0t8SHsCFF4ww0LdCOO6PsGxfxBsZnII0H3fgski7CkXXGuCbKkuTvUvdd1w2Y8-Wzvr8Cp-dSXIi0DbBqr0SaUUd6-FsbEC0HRgwtb5-AdF1GGv4Pw_qQNSq4vrYxri8jBcxOw
+2025-02-14T15:40:42.926Z INFO  CheerioCrawler: Starting the crawler.
+2025-02-14T15:40:45.692Z [GET_SEARCH_RESULTS_M] entering... https://graph.realtor.com/graphql?client_id=iOSApp 200 page: 1
+2025-02-14T15:40:45.695Z [GET_SEARCH_RESULTS_M] found items length: 200 total Results 308 itemsPerPage: 200
+2025-02-14T15:40:45.713Z [GET_SEARCH_CRITERIA] temp items length: 200 total from json: 308 global Counter: 200 maxItems: 200
+2025-02-14T15:40:45.716Z [GET_SEARCH_RESULTS_M] item url:: 7723857310
+2025-02-14T15:40:45.737Z [GET_SEARCH_RESULTS_M] item url:: 7281492903
+2025-02-14T15:40:45.760Z [GET_SEARCH_RESULTS_M] item url:: 9320926901
+2025-02-14T15:40:45.797Z [GET_SEARCH_RESULTS_M] item url:: 9390012127
+2025-02-14T15:40:45.825Z [GET_SEARCH_RESULTS_M] item url:: 7706119944
+2025-02-14T15:40:45.876Z [GET_SEARCH_RESULTS_M] item url:: 7271207502
+2025-02-14T15:40:45.917Z [GET_SEARCH_RESULTS_M] item url:: 8622575374
+2025-02-14T15:40:45.955Z [GET_SEARCH_RESULTS_M] item url:: 7954504269
+2025-02-14T15:40:46.020Z [GET_SEARCH_RESULTS_M] item url:: 7954869774
+2025-02-14T15:40:46.062Z [GET_SEARCH_RESULTS_M] item url:: 7458197852
+2025-02-14T15:40:46.097Z [GET_SEARCH_RESULTS_M] item url:: 7361885139
+2025-02-14T15:40:46.141Z [GET_SEARCH_RESULTS_M] item url:: 7806036754
+2025-02-14T15:40:46.171Z [GET_SEARCH_RESULTS_M] item url:: 8784483299
+2025-02-14T15:40:46.208Z [GET_SEARCH_RESULTS_M] item url:: 9410874347
+2025-02-14T15:40:46.263Z [GET_SEARCH_RESULTS_M] item url:: 8573039307
+2025-02-14T15:40:46.274Z [GET_SEARCH_RESULTS_M] item url:: 7445900091
+2025-02-14T15:40:46.302Z [GET_SEARCH_RESULTS_M] item url:: 7656481709
+2025-02-14T15:40:46.336Z [GET_SEARCH_RESULTS_M] item url:: 8446056571
+2025-02-14T15:40:46.522Z [GET_SEARCH_RESULTS_M] item url:: 7329163564
+2025-02-14T15:40:46.561Z [GET_SEARCH_RESULTS_M] item url:: 8896140103
+2025-02-14T15:40:46.594Z [GET_SEARCH_RESULTS_M] item url:: 8606173804
+2025-02-14T15:40:46.647Z [GET_SEARCH_RESULTS_M] item url:: 7455983418
+2025-02-14T15:40:46.671Z [GET_SEARCH_RESULTS_M] item url:: 7231103935
+2025-02-14T15:40:46.707Z [GET_SEARCH_RESULTS_M] item url:: 8886567311
+2025-02-14T15:40:46.736Z [GET_SEARCH_RESULTS_M] item url:: 7072316750
+2025-02-14T15:40:46.764Z [GET_SEARCH_RESULTS_M] item url:: 7796364056
+2025-02-14T15:40:46.798Z [GET_SEARCH_RESULTS_M] item url:: 8633140009
+2025-02-14T15:40:46.828Z [GET_SEARCH_RESULTS_M] item url:: 7627085178
+2025-02-14T15:40:46.856Z [GET_SEARCH_RESULTS_M] item url:: 9212663325
+2025-02-14T15:40:46.904Z [GET_SEARCH_RESULTS_M] item url:: 8768765112
+2025-02-14T15:40:46.927Z [GET_SEARCH_RESULTS_M] item url:: 7699423967
+2025-02-14T15:40:46.968Z [GET_SEARCH_RESULTS_M] item url:: 7468127040
+2025-02-14T15:40:47.135Z [GET_SEARCH_RESULTS_M] item url:: 7735683209
+2025-02-14T15:40:47.173Z [GET_SEARCH_RESULTS_M] item url:: 9855690696
+2025-02-14T15:40:47.199Z [GET_SEARCH_RESULTS_M] item url:: 7226667393
+2025-02-14T15:40:47.231Z [GET_SEARCH_RESULTS_M] item url:: 8036368158
+2025-02-14T15:40:47.257Z [GET_SEARCH_RESULTS_M] item url:: 7191048460
+2025-02-14T15:40:47.294Z [GET_SEARCH_RESULTS_M] item url:: 9101099536
+2025-02-14T15:40:47.385Z [GET_SEARCH_RESULTS_M] item url:: 7801751170
+2025-02-14T15:40:47.420Z [GET_SEARCH_RESULTS_M] item url:: 8004850557
+2025-02-14T15:40:47.455Z [GET_SEARCH_RESULTS_M] item url:: 8886562756
+2025-02-14T15:40:47.488Z [GET_SEARCH_RESULTS_M] item url:: 7612209769
+2025-02-14T15:40:47.521Z [GET_SEARCH_RESULTS_M] item url:: 8629677517
+2025-02-14T15:40:47.574Z [GET_SEARCH_RESULTS_M] item url:: 7762515208
+2025-02-14T15:40:47.613Z [GET_SEARCH_RESULTS_M] item url:: 8459313280
+2025-02-14T15:40:47.640Z [GET_SEARCH_RESULTS_M] item url:: 8039843216
+2025-02-14T15:40:47.744Z [GET_SEARCH_RESULTS_M] item url:: 8266308410
+2025-02-14T15:40:47.781Z [GET_SEARCH_RESULTS_M] item url:: 9093517776
+2025-02-14T15:40:47.809Z [GET_SEARCH_RESULTS_M] item url:: 8852654997
+2025-02-14T15:40:47.832Z [GET_SEARCH_RESULTS_M] item url:: 7535962245
+2025-02-14T15:40:47.855Z [GET_SEARCH_RESULTS_M] item url:: 8705984715
+2025-02-14T15:40:47.884Z [GET_SEARCH_RESULTS_M] item url:: 7873071367
+2025-02-14T15:40:47.907Z [GET_SEARCH_RESULTS_M] item url:: 8939801450
+2025-02-14T15:40:47.946Z [GET_SEARCH_RESULTS_M] item url:: 7239270590
+2025-02-14T15:40:48.018Z [GET_SEARCH_RESULTS_M] item url:: 9292011999
+2025-02-14T15:40:48.046Z [GET_SEARCH_RESULTS_M] item url:: 7210110250
+2025-02-14T15:40:48.075Z [GET_SEARCH_RESULTS_M] item url:: 7737409335
+2025-02-14T15:40:48.101Z [GET_SEARCH_RESULTS_M] item url:: 9242362954
+2025-02-14T15:40:48.201Z [GET_SEARCH_RESULTS_M] item url:: 8909243194
+2025-02-14T15:40:48.237Z [GET_SEARCH_RESULTS_M] item url:: 9663607799
+2025-02-14T15:40:48.267Z [GET_SEARCH_RESULTS_M] item url:: 8161234899
+2025-02-14T15:40:48.300Z [GET_SEARCH_RESULTS_M] item url:: 8713276123
+2025-02-14T15:40:48.324Z [GET_SEARCH_RESULTS_M] item url:: 9672672713
+2025-02-14T15:40:48.346Z [GET_SEARCH_RESULTS_M] item url:: 7539711308
+2025-02-14T15:40:48.386Z [GET_SEARCH_RESULTS_M] item url:: 7971825777
+2025-02-14T15:40:48.408Z [GET_SEARCH_RESULTS_M] item url:: 7563155194
+2025-02-14T15:40:48.437Z [GET_SEARCH_RESULTS_M] item url:: 9866217868
+2025-02-14T15:40:48.466Z [GET_SEARCH_RESULTS_M] item url:: 8549268191
+2025-02-14T15:40:48.506Z [GET_SEARCH_RESULTS_M] item url:: 8434332503
+2025-02-14T15:40:48.541Z [GET_SEARCH_RESULTS_M] item url:: 9959836528
+2025-02-14T15:40:48.590Z [GET_SEARCH_RESULTS_M] item url:: 7226488371
+2025-02-14T15:40:48.616Z [GET_SEARCH_RESULTS_M] item url:: 8737838934
+2025-02-14T15:40:48.649Z [GET_SEARCH_RESULTS_M] item url:: 9735881747
+2025-02-14T15:40:48.673Z [GET_SEARCH_RESULTS_M] item url:: 7951837568
+2025-02-14T15:40:48.699Z [GET_SEARCH_RESULTS_M] item url:: 8711640977
+2025-02-14T15:40:48.751Z [GET_SEARCH_RESULTS_M] item url:: 7685451868
+2025-02-14T15:40:48.801Z [GET_SEARCH_RESULTS_M] item url:: 7896138985
+2025-02-14T15:40:48.831Z [GET_SEARCH_RESULTS_M] item url:: 7280421788
+2025-02-14T15:40:48.862Z [GET_SEARCH_RESULTS_M] item url:: 8758045115
+2025-02-14T15:40:48.898Z [GET_SEARCH_RESULTS_M] item url:: 7580086527
+2025-02-14T15:40:48.924Z [GET_SEARCH_RESULTS_M] item url:: 7954608912
+2025-02-14T15:40:48.960Z [GET_SEARCH_RESULTS_M] item url:: 8484405151
+2025-02-14T15:40:48.989Z [GET_SEARCH_RESULTS_M] item url:: 7228314403
+2025-02-14T15:40:49.040Z [GET_SEARCH_RESULTS_M] item url:: 7957224682
+2025-02-14T15:40:49.093Z [GET_SEARCH_RESULTS_M] item url:: 9111049742
+2025-02-14T15:40:49.167Z [GET_SEARCH_RESULTS_M] item url:: 9317917620
+2025-02-14T15:40:49.241Z [GET_SEARCH_RESULTS_M] item url:: 9299801492
+2025-02-14T15:40:49.276Z [GET_SEARCH_RESULTS_M] item url:: 9874730535
+2025-02-14T15:40:49.306Z [GET_SEARCH_RESULTS_M] item url:: 9853132590
+2025-02-14T15:40:49.332Z [GET_SEARCH_RESULTS_M] item url:: 9835845703
+2025-02-14T15:40:49.357Z [GET_SEARCH_RESULTS_M] item url:: 9662165421
+2025-02-14T15:40:49.400Z [GET_SEARCH_RESULTS_M] item url:: 9493163979
+2025-02-14T15:40:49.426Z [GET_SEARCH_RESULTS_M] item url:: 9496676732
+2025-02-14T15:40:49.463Z [GET_SEARCH_RESULTS_M] item url:: 9210189913
+2025-02-14T15:40:49.487Z [GET_SEARCH_RESULTS_M] item url:: 9313123777
+2025-02-14T15:40:49.536Z [GET_SEARCH_RESULTS_M] item url:: 9598397645
+2025-02-14T15:40:49.560Z [GET_SEARCH_RESULTS_M] item url:: 9411971142
+2025-02-14T15:40:49.592Z [GET_SEARCH_RESULTS_M] item url:: 9583278187
+2025-02-14T15:40:49.627Z [GET_SEARCH_RESULTS_M] item url:: 9235213628
+2025-02-14T15:40:49.754Z [GET_SEARCH_RESULTS_M] item url:: 8498225222
+2025-02-14T15:40:49.798Z [GET_SEARCH_RESULTS_M] item url:: 9948472322
+2025-02-14T15:40:49.828Z [GET_SEARCH_RESULTS_M] item url:: 8301516685
+2025-02-14T15:40:49.865Z [GET_SEARCH_RESULTS_M] item url:: 9537259478
+2025-02-14T15:40:49.909Z [GET_SEARCH_RESULTS_M] item url:: 7384756829
+2025-02-14T15:40:49.937Z [GET_SEARCH_RESULTS_M] item url:: 9256232418
+2025-02-14T15:40:49.970Z [GET_SEARCH_RESULTS_M] item url:: 9707111062
+2025-02-14T15:40:49.994Z [GET_SEARCH_RESULTS_M] item url:: 7360804427
+2025-02-14T15:40:50.064Z [GET_SEARCH_RESULTS_M] item url:: 8491879159
+2025-02-14T15:40:50.091Z [GET_SEARCH_RESULTS_M] item url:: 8558895919
+2025-02-14T15:40:50.113Z [GET_SEARCH_RESULTS_M] item url:: 8436278373
+2025-02-14T15:40:50.150Z [GET_SEARCH_RESULTS_M] item url:: 7930646911
+2025-02-14T15:40:50.181Z [GET_SEARCH_RESULTS_M] item url:: 7505276292
+2025-02-14T15:40:50.209Z [GET_SEARCH_RESULTS_M] item url:: 7886958968
+2025-02-14T15:40:50.288Z [GET_SEARCH_RESULTS_M] item url:: 7893050284
+2025-02-14T15:40:50.331Z [GET_SEARCH_RESULTS_M] item url:: 7989092138
+2025-02-14T15:40:50.366Z [GET_SEARCH_RESULTS_M] item url:: 8899411466
+2025-02-14T15:40:50.392Z [GET_SEARCH_RESULTS_M] item url:: 8729938493
+2025-02-14T15:40:50.451Z [GET_SEARCH_RESULTS_M] item url:: 8886492779
+2025-02-14T15:40:50.531Z [GET_SEARCH_RESULTS_M] item url:: 8690274997
+2025-02-14T15:40:50.563Z [GET_SEARCH_RESULTS_M] item url:: 8099431519
+2025-02-14T15:40:50.640Z [GET_SEARCH_RESULTS_M] item url:: 7562129079
+2025-02-14T15:40:50.690Z [GET_SEARCH_RESULTS_M] item url:: 9609030222
+2025-02-14T15:40:50.704Z [GET_SEARCH_RESULTS_M] item url:: 7673728840
+2025-02-14T15:40:50.764Z [GET_SEARCH_RESULTS_M] item url:: 9208292699
+2025-02-14T15:40:50.809Z [GET_SEARCH_RESULTS_M] item url:: 8176613841
+2025-02-14T15:40:50.835Z [GET_SEARCH_RESULTS_M] item url:: 8909983438
+2025-02-14T15:40:50.888Z [GET_SEARCH_RESULTS_M] item url:: 8009505131
+2025-02-14T15:40:50.910Z [GET_SEARCH_RESULTS_M] item url:: 8479038856
+2025-02-14T15:40:50.940Z [GET_SEARCH_RESULTS_M] item url:: 7995235424
+2025-02-14T15:40:50.966Z [GET_SEARCH_RESULTS_M] item url:: 7246071884
+2025-02-14T15:40:51.000Z [GET_SEARCH_RESULTS_M] item url:: 7115603819
+2025-02-14T15:40:51.026Z [GET_SEARCH_RESULTS_M] item url:: 8941024745
+2025-02-14T15:40:51.052Z [GET_SEARCH_RESULTS_M] item url:: 8624040638
+2025-02-14T15:40:51.078Z [GET_SEARCH_RESULTS_M] item url:: 9858693670
+2025-02-14T15:40:51.105Z [GET_SEARCH_RESULTS_M] item url:: 7120622126
+2025-02-14T15:40:51.131Z [GET_SEARCH_RESULTS_M] item url:: 7945143363
+2025-02-14T15:40:51.160Z [GET_SEARCH_RESULTS_M] item url:: 9154888079
+2025-02-14T15:40:51.192Z [GET_SEARCH_RESULTS_M] item url:: 9096781261
+2025-02-14T15:40:51.217Z [GET_SEARCH_RESULTS_M] item url:: 7198762510
+2025-02-14T15:40:51.254Z [GET_SEARCH_RESULTS_M] item url:: 7648902721
+2025-02-14T15:40:51.289Z [GET_SEARCH_RESULTS_M] item url:: 7504424068
+2025-02-14T15:40:51.335Z [GET_SEARCH_RESULTS_M] item url:: 8659948560
+2025-02-14T15:40:51.373Z [GET_SEARCH_RESULTS_M] item url:: 7710740921
+2025-02-14T15:40:51.414Z [GET_SEARCH_RESULTS_M] item url:: 9835584731
+2025-02-14T15:40:51.443Z [GET_SEARCH_RESULTS_M] item url:: 7233848655
+2025-02-14T15:40:51.478Z [GET_SEARCH_RESULTS_M] item url:: 7763105868
+2025-02-14T15:40:51.498Z [GET_SEARCH_RESULTS_M] item url:: 9874014025
+2025-02-14T15:40:51.525Z [GET_SEARCH_RESULTS_M] item url:: 7872854069
+2025-02-14T15:40:51.548Z [GET_SEARCH_RESULTS_M] item url:: 9220815400
+2025-02-14T15:40:51.582Z [GET_SEARCH_RESULTS_M] item url:: 8615171344
+2025-02-14T15:40:51.616Z [GET_SEARCH_RESULTS_M] item url:: 9739104897
+2025-02-14T15:40:51.647Z [GET_SEARCH_RESULTS_M] item url:: 7309125859
+2025-02-14T15:40:51.673Z [GET_SEARCH_RESULTS_M] item url:: 8594373096
+2025-02-14T15:40:51.700Z [GET_SEARCH_RESULTS_M] item url:: 9730426309
+2025-02-14T15:40:51.784Z [GET_SEARCH_RESULTS_M] item url:: 9411899992
+2025-02-14T15:40:51.807Z [GET_SEARCH_RESULTS_M] item url:: 8553401378
+2025-02-14T15:40:51.831Z [GET_SEARCH_RESULTS_M] item url:: 7579855930
+2025-02-14T15:40:51.857Z [GET_SEARCH_RESULTS_M] item url:: 9130969781
+2025-02-14T15:40:51.883Z [GET_SEARCH_RESULTS_M] item url:: 9105254104
+2025-02-14T15:40:51.909Z [GET_SEARCH_RESULTS_M] item url:: 9909427629
+2025-02-14T15:40:51.952Z [GET_SEARCH_RESULTS_M] item url:: 7362890464
+2025-02-14T15:40:51.976Z [GET_SEARCH_RESULTS_M] item url:: 7965729937
+2025-02-14T15:40:52.002Z [GET_SEARCH_RESULTS_M] item url:: 8462381683
+2025-02-14T15:40:52.034Z [GET_SEARCH_RESULTS_M] item url:: 7505691110
+2025-02-14T15:40:52.068Z [GET_SEARCH_RESULTS_M] item url:: 7208222647
+2025-02-14T15:40:52.100Z [GET_SEARCH_RESULTS_M] item url:: 9737822080
+2025-02-14T15:40:52.132Z [GET_SEARCH_RESULTS_M] item url:: 9478772525
+2025-02-14T15:40:52.162Z [GET_SEARCH_RESULTS_M] item url:: 9403220042
+2025-02-14T15:40:52.194Z [GET_SEARCH_RESULTS_M] item url:: 7321191248
+2025-02-14T15:40:52.222Z [GET_SEARCH_RESULTS_M] item url:: 9912208304
+2025-02-14T15:40:52.273Z [GET_SEARCH_RESULTS_M] item url:: 9869525280
+2025-02-14T15:40:52.313Z [GET_SEARCH_RESULTS_M] item url:: 9016606582
+2025-02-14T15:40:52.341Z [GET_SEARCH_RESULTS_M] item url:: 9111895825
+2025-02-14T15:40:52.376Z [GET_SEARCH_RESULTS_M] item url:: 9204136575
+2025-02-14T15:40:52.409Z [GET_SEARCH_RESULTS_M] item url:: 9086460409
+2025-02-14T15:40:52.447Z [GET_SEARCH_RESULTS_M] item url:: 9884994673
+2025-02-14T15:40:52.477Z [GET_SEARCH_RESULTS_M] item url:: 9524552448
+2025-02-14T15:40:52.508Z [GET_SEARCH_RESULTS_M] item url:: 9836092300
+2025-02-14T15:40:52.631Z [GET_SEARCH_RESULTS_M] item url:: 7070331997
+2025-02-14T15:40:52.657Z [GET_SEARCH_RESULTS_M] item url:: 9160988380
+2025-02-14T15:40:52.688Z [GET_SEARCH_RESULTS_M] item url:: 9855672517
+2025-02-14T15:40:52.716Z [GET_SEARCH_RESULTS_M] item url:: 9399466954
+2025-02-14T15:40:52.785Z [GET_SEARCH_RESULTS_M] item url:: 9826022356
+2025-02-14T15:40:52.830Z [GET_SEARCH_RESULTS_M] item url:: 9837398582
+2025-02-14T15:40:52.857Z [GET_SEARCH_RESULTS_M] item url:: 9429848203
+2025-02-14T15:40:52.891Z [GET_SEARCH_RESULTS_M] item url:: 7936068142
+2025-02-14T15:40:52.918Z [GET_SEARCH_RESULTS_M] item url:: 9167947614
+2025-02-14T15:40:52.985Z [GET_SEARCH_RESULTS_M] item url:: 9950456150
+2025-02-14T15:40:53.008Z [GET_SEARCH_RESULTS_M] item url:: 9491369558
+2025-02-14T15:40:53.041Z [GET_SEARCH_RESULTS_M] item url:: 9624698251
+2025-02-14T15:40:53.090Z [GET_SEARCH_RESULTS_M] item url:: 7084317882
+2025-02-14T15:40:53.120Z [GET_SEARCH_RESULTS_M] item url:: 9867591455
+2025-02-14T15:40:53.154Z [GET_SEARCH_RESULTS_M] item url:: 9176281852
+2025-02-14T15:40:53.194Z [GET_SEARCH_RESULTS_M] item url:: 8455238697
+2025-02-14T15:40:53.226Z [GET_SEARCH_RESULTS_M] item url:: 9164400984
+2025-02-14T15:40:53.259Z [GET_SEARCH_RESULTS_M] item url:: 9756394063
+2025-02-14T15:40:53.298Z [GET_SEARCH_RESULTS_M] item url:: 7378842917
+2025-02-14T15:40:53.330Z [GET_SEARCH_RESULTS_M] item url:: 7056514066
+2025-02-14T15:40:53.368Z [GET_SEARCH_RESULTS_M] item url:: 9500948970
+2025-02-14T15:40:53.396Z [GET_SEARCH_RESULTS_M] item url:: 9185338245
+2025-02-14T15:40:53.429Z [GET_SEARCH_RESULTS_M] MAX REACHED over maxItems: 200
+2025-02-14T15:40:55.800Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:56.342Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:56.359Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:56.696Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:58.013Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:58.095Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:59.086Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:59.210Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:59.244Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:59.626Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:40:59.994Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:00.688Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:02.752Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:03.000Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:03.643Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:03.733Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:04.787Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:05.592Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:05.651Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:06.081Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:07.212Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:08.765Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:10.202Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:10.650Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:11.172Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:11.516Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:11.778Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:13.522Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:14.509Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:14.554Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:15.097Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:15.282Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:16.895Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:18.272Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:18.576Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:18.653Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:19.345Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:20.584Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:21.435Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:22.590Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:23.554Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:24.341Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:24.799Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:25.131Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:25.133Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:25.135Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:25.136Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:25.138Z  {"id":"ZWwXxHTY2yKLnjr","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:25.544Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:25.620Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:25.622Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:25.623Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:25.625Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:25.627Z  {"id":"x0kAmfL3eEX55NE","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:27.224Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:27.980Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:28.806Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:29.349Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:29.351Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [Client network socket disconnected before secure TLS connection was established]
+2025-02-14T15:41:29.355Z ERROR CheerioCrawler: START RequestError: Client network socket disconnected before secure TLS connection was established END
+2025-02-14T15:41:29.357Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. Client network socket disconnected before secure TLS connection was established
+2025-02-14T15:41:29.360Z  {"id":"45Z3lkKmDbwED7t","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:30.301Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:30.429Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:30.431Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:30.433Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:30.435Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:30.436Z  {"id":"ARmwfKJDdXsVVFo","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:30.712Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:31.809Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:31.955Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:32.458Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:32.542Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:34.031Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:35.060Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:35.792Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:36.657Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:38.060Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:38.080Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:38.846Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:39.573Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:39.862Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:40.085Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:40.087Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:40.089Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:40.091Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:40.093Z  {"id":"Qw3G31pEVN9Qz5P","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:40.625Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:41.123Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:41.835Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:42.047Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:42.926Z INFO  CheerioCrawler:Statistics: CheerioCrawler request statistics: {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3897,"requestsFinishedPerMinute":66,"requestsFailedPerMinute":0,"requestTotalDurationMillis":261106,"requestsTotal":67,"crawlerRuntimeMillis":60894,"retryHistogram":[67]}
+2025-02-14T15:41:42.948Z INFO  CheerioCrawler:AutoscaledPool: state {"currentConcurrency":10,"desiredConcurrency":10,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.7,"actualRatio":0},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}
+2025-02-14T15:41:43.545Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:43.702Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:43.929Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:44.831Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:45.018Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:46.079Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:46.625Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:47.804Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:47.973Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:48.158Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:50.250Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:51.048Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:51.312Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:52.688Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:52.915Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:53.473Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:53.854Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:54.452Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:54.842Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:55.773Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:57.428Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:57.701Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:57.703Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:57.705Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:57.708Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:57.710Z  {"id":"8tlrvB0oU5kNWPO","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:57.835Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:58.220Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:41:58.223Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:41:58.225Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:41:58.227Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:41:58.229Z  {"id":"bmfXeI8Tx4gMQpZ","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:41:58.372Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:41:59.033Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:00.328Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:01.864Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:02.257Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:02.715Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:04.387Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:04.501Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:04.805Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:07.917Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:07.919Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:07.921Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:07.923Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:07.925Z  {"id":"Uw2yWArHgFxZ2ZU","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:08.794Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:09.045Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:09.360Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:10.455Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:12.246Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:12.535Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:12.924Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:12.926Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:12.928Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:12.930Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:12.932Z  {"id":"hERLeXFxa4gBDa5","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:15.024Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:16.328Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:16.541Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:16.544Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:16.546Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:16.548Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:16.550Z  {"id":"x7QX3uSS6PvKHHg","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:16.677Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:17.604Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:17.814Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:18.640Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:19.235Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:19.240Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:19.242Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:19.245Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:19.247Z  {"id":"8Lll0QIXs8mneyB","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:19.376Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:20.165Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:20.576Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:20.839Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:22.680Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:23.089Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:23.870Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:24.223Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:26.946Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:26.991Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:26.994Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:26.997Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:26.999Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:27.001Z  {"id":"Rqtn3heDDr6aiqs","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:27.334Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:27.875Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:28.277Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:30.291Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:30.617Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:31.192Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:31.194Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:31.197Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:31.199Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:31.201Z  {"id":"mb5hsuJjY11Tbfc","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:31.746Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:32.096Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:32.169Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:32.292Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:33.500Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:34.639Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:35.011Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:35.169Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:35.379Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:35.877Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:36.373Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:36.414Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:37.818Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:38.433Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:38.563Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:38.916Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:40.177Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:40.502Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:40.765Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:41.851Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:42.090Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:42.173Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:42.784Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:42.927Z INFO  CheerioCrawler:Statistics: CheerioCrawler request statistics: {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":4085,"requestsFinishedPerMinute":73,"requestsFailedPerMinute":0,"requestTotalDurationMillis":600498,"requestsTotal":147,"crawlerRuntimeMillis":120895,"retryHistogram":[147]}
+2025-02-14T15:42:42.949Z INFO  CheerioCrawler:AutoscaledPool: state {"currentConcurrency":10,"desiredConcurrency":10,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.7,"actualRatio":0},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}
+2025-02-14T15:42:43.395Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:43.508Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:44.413Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:44.813Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:45.386Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:45.402Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:46.494Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:47.049Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:47.161Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:47.888Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:48.518Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:48.804Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:48.975Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:49.988Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:42:49.991Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:42:49.993Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:42:49.995Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:42:49.997Z  {"id":"D5DgNooI1ZaNiwM","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:42:50.679Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:51.151Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:51.397Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:51.591Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:51.915Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:53.038Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:53.701Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:54.916Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:55.231Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:55.338Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:57.676Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:58.207Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:58.593Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:58.722Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:42:59.308Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:01.126Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:02.322Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:02.809Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:02.982Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:03.279Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:05.289Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:05.907Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:06.418Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:06.668Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:07.457Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:07.460Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:07.461Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:07.463Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:07.465Z  {"id":"zc0zSdrdSHZxFY3","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:43:09.105Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:09.146Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:09.532Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:10.138Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:11.245Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:12.523Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:14.207Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:14.405Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:14.831Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:16.026Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:18.577Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:18.692Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:18.694Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:18.697Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:18.698Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:18.700Z  {"id":"6oPfNKOfnL2BNUT","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:43:20.887Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:20.889Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:20.892Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:20.893Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:20.895Z  {"id":"9l6jT8l629SVX58","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:43:21.880Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:24.635Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:24.638Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:24.640Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:24.642Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:24.644Z  {"id":"SIPpyk5PFUUVkd8","url":"https://api.frontdoor.realtor.com/graphql","retryCount":1}
+2025-02-14T15:43:26.166Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:28.033Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:34.191Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:34.195Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:34.197Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:34.201Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:34.203Z  {"id":"ZWwXxHTY2yKLnjr","url":"https://api.frontdoor.realtor.com/graphql","retryCount":2}
+2025-02-14T15:43:36.980Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:43:42.244Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:42.246Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:42.249Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:42.251Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:42.253Z  {"id":"x7QX3uSS6PvKHHg","url":"https://api.frontdoor.realtor.com/graphql","retryCount":2}
+2025-02-14T15:43:42.877Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:43:42.879Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:43:42.881Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:43:42.883Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:43:42.885Z  {"id":"ARmwfKJDdXsVVFo","url":"https://api.frontdoor.realtor.com/graphql","retryCount":2}
+2025-02-14T15:43:42.927Z INFO  CheerioCrawler:Statistics: CheerioCrawler request statistics: {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":4145,"requestsFinishedPerMinute":66,"requestsFailedPerMinute":0,"requestTotalDurationMillis":824820,"requestsTotal":199,"crawlerRuntimeMillis":180895,"retryHistogram":[183,15,1]}
+2025-02-14T15:43:42.953Z INFO  CheerioCrawler:AutoscaledPool: state {"currentConcurrency":1,"desiredConcurrency":10,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.7,"actualRatio":0},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}
+2025-02-14T15:43:46.402Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:44:15.182Z INFO  CheerioCrawler: in error handler
+2025-02-14T15:44:15.184Z INFO  CheerioCrawler: Request https://api.frontdoor.realtor.com/graphql failed [The HTTP/2 stream has been early terminated]
+2025-02-14T15:44:15.186Z ERROR CheerioCrawler: START RequestError: The HTTP/2 stream has been early terminated END
+2025-02-14T15:44:15.188Z WARN  CheerioCrawler: Reclaiming failed request back to the list or queue. The HTTP/2 stream has been early terminated
+2025-02-14T15:44:15.189Z  {"id":"ARmwfKJDdXsVVFo","url":"https://api.frontdoor.realtor.com/graphql","retryCount":3}
+2025-02-14T15:44:18.206Z [GET_DETAILS_MOBILE] entering: https://api.frontdoor.realtor.com/graphql 200
+2025-02-14T15:44:18.395Z INFO  CheerioCrawler: All requests from the queue have been processed, the crawler will shut down.
+2025-02-14T15:44:18.646Z INFO  CheerioCrawler: Final request statistics: {"requestsFinished":201,"requestsFailed":0,"retryHistogram":[183,15,2,1],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":4138,"requestsFinishedPerMinute":56,"requestsFailedPerMinute":0,"requestTotalDurationMillis":831687,"requestsTotal":201,"crawlerRuntimeMillis":216615}
+2025-02-14T15:44:18.648Z INFO  CheerioCrawler: Finished! Total 201 requests: 201 succeeded, 0 failed. {"terminal":true}
+2025-02-14T15:44:18.659Z Crawl finished.
+2025-02-14T15:44:21.227Z length: 200
+2025-02-14T15:44:23.953Z INFO  CheerioCrawler: Export to data.csv finished!
+2025-02-14T15:44:26.281Z INFO  CheerioCrawler: Export to data.json finished!
