@@ -161,5 +161,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 Scraping/HTML_files/*
-Scrapting/text_files/*
+Scraping/text_files/*
 Lead_Gen/Raw_Data/*
+
