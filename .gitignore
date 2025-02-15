@@ -162,5 +162,5 @@ cython_debug/
 #.idea/
 Scraping/HTML_files/*
 Scraping/text_files/*
-Lead_Gen/Raw_Data/*
+Lead_Gen/Raw_Data*/*
 
