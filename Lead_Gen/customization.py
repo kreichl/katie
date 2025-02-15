@@ -5,7 +5,10 @@ import json
 import time
 
 # Number of Rows to Loop through
-N = 25
+N = 5
+
+# Wait Time between Requests
+constant_wait_time = 1
 
 # Load Prompts
 prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_combined.json"
@@ -55,6 +58,11 @@ def submit_request(address, agent_name, agent_email, description, max_retries=5)
 
             if response.status_code == 200:
                 if "choices" in response_json and response_json["choices"]:
+
+                    # Print the token usage
+                    tokens_used = response_json.get("usage", {}).get("total_tokens", "Unknown")
+                    print(f"Tokens used: {tokens_used}")
+
                     return response_json["choices"][0]["message"]["content"]
                 else:
                     raise KeyError("Missing 'choices' key in API response.")
@@ -85,6 +93,7 @@ count = 0
 
 try:
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
+        print(f"Row {count+1} of {N}")
         address = df.at[index, 'Address Line 1']
         description = df.at[index, 'Description']
         agent_name = df.at[index, 'Agent Name']
@@ -100,11 +109,11 @@ try:
         if response:
             try:
                 response_json = json.loads(response)
+                
                 new_email = response_json.get("email", "")
                 salutation = response_json.get("salutation", "")
-                opening = response_json.get("opening", "")
-
-                print("--------------------")
+                opening = response_json.get("opening", "")   
+                
                 print(f"Email: {new_email}")
                 print(f"Salutation: {salutation}")
                 print(f"Opening: {opening}")
@@ -115,7 +124,8 @@ try:
                 df.at[index, 'email_opening'] = opening
 
             except json.JSONDecodeError:
-                print("Error: Response is not valid JSON.")
+                print(response_json)
+                print("Error: AI Model did not Return its Response in JSON")
         
         else:
             print("Error: No email opening generated.")
@@ -132,7 +142,8 @@ try:
             video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video."
 
         df.at[index, 'video_line'] = video_line
-        time.sleep(8)
+        time.sleep(constant_wait_time)
+        print("--------------------")
 
         count += 1
 
