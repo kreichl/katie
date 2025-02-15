@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-import random
 import requests
 import json
 
@@ -96,9 +95,10 @@ for index, row in df[df['video_line'].isnull()].head(N).iterrows():
     matterport_exists = not pd.isna(matterport_link)
 
     # Generate Customized Email Opening
-    # email_opening = submit_request(address, agent_name, description)
-    # df.at[index, 'email_opening'] = [email_opening]
-    # print(email_opening)
+    email_opening = submit_request_opening(address, agent_name, description)
+    df.at[index, 'email_opening'] = [email_opening]
+    print("--------------------")
+    print(email_opening)
 
     # Create Video Line
     if not video_tour_exists and not matterport_exists:
@@ -118,7 +118,6 @@ for index, row in df[df['video_line'].isnull()].head(N).iterrows():
     # Check Email Field
     current_email = df.at[index, 'Agent Email']
     if "," in current_email:
-        print(current_email)
         single_email = submit_request_duplicates(current_email)
         print(single_email)
         df.at[index, 'Agent Email'] = single_email
@@ -133,5 +132,5 @@ df.to_pickle(pickle_file)
 non_empty_count = df['video_line'].notnull().sum()
 total_count = len(df)
 
-# print(f"Updated {count} rows with customization values.")
-# print(f"{non_empty_count} of {total_count} rows have be completed.")
+print(f"Updated {count} rows with customization values.")
+print(f"{non_empty_count} of {total_count} rows have be completed.")
