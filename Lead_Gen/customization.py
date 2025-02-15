@@ -13,7 +13,7 @@ log_file = os.path.join(script_folder,"process.log")
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,
-    format='%(message)s',
+    format='%(levelname)s | %(message)s',
 )
 
 # Number of Rows to Loop through
@@ -28,7 +28,7 @@ with open(prompts_file, 'r') as f:
     opening_prompts = json.load(f)
 
 # File Names
-original_csv_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\Cleaned_Leads_2025_02_14.csv"
+original_csv_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\CSV_files\Cleaned_Leads_2025_02_14.csv"
 basename = os.path.basename(original_csv_file).replace(".csv", "")
 csv_file = os.path.join(os.path.dirname(original_csv_file), f"Customized_{basename}.csv")
 
