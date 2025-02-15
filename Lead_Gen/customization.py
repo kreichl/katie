@@ -2,9 +2,10 @@ import pandas as pd
 import os
 import requests
 import json
+import time
 
 # Number of Rows to Loop through
-N = 1
+N = 25
 
 # Load Prompts
 prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_combined.json"
@@ -35,8 +36,8 @@ headers = {
     'Authorization': f'Bearer {api_key}'
 }
 
-def submit_request(address, agent_name, agent_email, description):
-    """Submits a request to OpenAI API to generate an email opening."""
+def submit_request(address, agent_name, agent_email, description, max_retries=5):
+    """Submits a request to OpenAI API to generate an email opening with retry handling."""
     
     input_string = f"Agent Name: {agent_name}\nAgent Email: {agent_email}\nListing Address: {address}\nListing Description:\"{description}\"\n\nGenerate an email opening."
     
@@ -46,22 +47,38 @@ def submit_request(address, agent_name, agent_email, description):
         "content": input_string
     })
 
-    try:
-        response = requests.post(url, headers=headers, data=json.dumps(data))
-        response_json = response.json()
+    retries = 0
+    while retries < max_retries:
+        try:
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            response_json = response.json()
 
-        # Ensure valid response
-        if response.status_code != 200:
-            raise ValueError(f"API Error {response.status_code}: {response_json}")
+            if response.status_code == 200:
+                if "choices" in response_json and response_json["choices"]:
+                    return response_json["choices"][0]["message"]["content"]
+                else:
+                    raise KeyError("Missing 'choices' key in API response.")
+            
+            elif response.status_code == 429:
+                wait_time = 2 ** retries # Exponential backoff (2, 4, 8, 16... sec)
+                print(f"Rate limited. Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+                retries += 1
+                continue  # Retry after waiting
 
-        if "choices" not in response_json or not response_json["choices"]:
-            raise KeyError("Missing 'choices' key in API response.")
+            else:
+                raise ValueError(f"API Error {response.status_code}: {response_json}")
 
-        return response_json["choices"][0]["message"]["content"]
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
+            break
 
-    except Exception as e:
-        print(f"Error in submit_request_opening: {e}")
-        return None  # Return None if an error occurs
+        except json.JSONDecodeError:
+            print("Error: Response is not valid JSON.")
+            break
+
+    print("Max retries reached. Skipping this request.")
+    return None  # Return None if all retries fail
 
 # Main Processing Loop
 count = 0
@@ -115,6 +132,7 @@ try:
             video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video."
 
         df.at[index, 'video_line'] = video_line
+        time.sleep(8)
 
         count += 1
 
