@@ -62,8 +62,12 @@ def submit_request(address, agent_name, agent_email, description, max_retries=5)
                     # Output input and response tokens separately
                     input_tokens = response_json.get("usage", {}).get("prompt_tokens", "Unknown")
                     response_tokens = response_json.get("usage", {}).get("completion_tokens", "Unknown")
+                    total_tokens = response_json.get("usage", {}).get("total_tokens", "0")
+                    cost_cents = total_tokens * (0.150/1e6*100) # GPT-4o Mini costs $0.150 per 1,000,000 tokens
+
                     print(f"Input tokens: {input_tokens}")
-                    print(f"Response tokens: {response_tokens}\n")
+                    print(f"Response tokens: {response_tokens}")
+                    print(f"Cost: {cost_cents:,.4f} cents\n")
 
                     return response_json["choices"][0]["message"]["content"]
                 else:
@@ -95,7 +99,8 @@ count = 0
 
 try:
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
-        print(f"Row {count+1} of {N}\n")
+        print(f"Row {count+1} of {N}")
+        print("---------------------------------------------------")
         address = df.at[index, 'Address Line 1']
         description = df.at[index, 'Description']
         agent_name = df.at[index, 'Agent Name']
