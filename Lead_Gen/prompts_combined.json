@@ -1,5 +1,5 @@
 {
-    "model": "gpt-4-turbo",
+    "model": "gpt-4o-mini",
     "messages": [
     {
         "role": "system",
@@ -11,7 +11,7 @@
       },
       {
         "role": "assistant",
-        "content": "{{\"email\":\"roliversen@bunburyrealtors.com\",\"salutation\":\"Hey Ryan,\", \"opening\":\"I came across your listing at 123 Main St. You did a fantastic job describing the home and all it has to offer. The spacious living areas and impressive features really make it stand out.\"}}"
+        "content": "{\"email\":\"roliversen@bunburyrealtors.com\",\"salutation\":\"Hey Ryan,\", \"opening\":\"I came across your listing at 123 Main St. You did a fantastic job describing the home and all it has to offer. The spacious living areas and impressive features really make it stand out.\"}"
       },
       {
         "role": "user",
@@ -19,7 +19,7 @@
       },
       {
         "role": "assistant",
-        "content": "{{\"email\":\"dustin@mhbrealestate.com\",\"salutation\":\"Hi Dustin,\", \"opening\":\"I ran across your listing at 3445 Merrimac Ln. You did a great job showcasing its unique features and making it feel inviting.\"}}"
+        "content": "{\"email\":\"dustin@mhbrealestate.com\",\"salutation\":\"Hi Dustin,\", \"opening\":\"I ran across your listing at 3445 Merrimac Ln. You did a great job showcasing its unique features and making it feel inviting.\"}"
       },
       {
         "role": "user",
@@ -27,7 +27,7 @@
       },
       {
         "role": "assistant",
-        "content": "{{\"email\":\"josh@joshlavik.com\",\"salutation\":\"Hi Josh,\", \"opening\":\"I saw your listing from 2540 Saint Charles Ct&mdash;beautiful property! You did a great job highlighting the open floor plan, spacious primary suite, and the large private yard.\"}}"
+        "content": "{\"email\":\"josh@joshlavik.com\",\"salutation\":\"Hi Josh,\", \"opening\":\"I saw your listing from 2540 Saint Charles Ct&mdash;beautiful property! You did a great job highlighting the open floor plan, spacious primary suite, and the large private yard.\"}"
       }
     ],
     "temperature": 0.7,
