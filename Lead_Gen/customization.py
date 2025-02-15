@@ -80,8 +80,6 @@ try:
         # Generate Customized Email Opening
         response = submit_request(address, agent_name, agent_email,description)
 
-        print(response)
-
         if response:
             try:
                 response_json = json.loads(response)
