@@ -9,7 +9,7 @@ import logging
 script_folder = os.path.dirname(os.path.abspath(__file__))
 
 # Configure logging
-log_file = os.path.join(script_folder,"process.log")
+log_file = os.path.join(script_folder,"customization_process.log")
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,
@@ -76,7 +76,8 @@ def submit_request(address, agent_name, agent_email, description, max_retries=5)
                     
                     logging.info(f"Input tokens: {input_tokens}")
                     logging.info(f"Response tokens: {response_tokens}")
-                    logging.info(f"Cost: ${cost*1000:,.4f} per 1,000 rows")
+                    logging.info(f"Cost: ${cost*1000:,.4f} per 1,000 rows\n")
+
 
                     return response_json["choices"][0]["message"]["content"]
                 else:
@@ -107,7 +108,9 @@ count = 0
 
 try:
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
-        logging.info(f"Processing row {count+1} of {N}")
+
+        logging.info(f"Processing row {count+1} of {N}\n")
+
         
         address = df.at[index, 'Address Line 1']
         description = df.at[index, 'Description']
@@ -131,7 +134,7 @@ try:
                 
                 logging.info(f"Email: {response_json.get('email', '')}")
                 logging.info(f"Salutation: {response_json.get('salutation', '')}")
-                logging.info(f"Opening: {response_json.get('opening', '')}")
+                logging.info(f"Opening: {response_json.get('opening', '')}\n")
 
             except json.JSONDecodeError:
                 logging.error("Error: AI Model did not return its response in JSON")
@@ -157,4 +160,4 @@ finally:
     non_empty_count = df['video_line'].notnull().sum()
     total_count = len(df)
     logging.info(f"Updated {count} rows with customization values.")
-    logging.info(f"{non_empty_count} of {total_count} rows have been completed.")
+    logging.info(f"{non_empty_count} of {total_count} rows have been completed.\n")
