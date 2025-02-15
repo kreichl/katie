@@ -5,10 +5,10 @@ import json
 import time
 
 # Number of Rows to Loop through
-N = 5
+N = 3
 
 # Wait Time between Requests
-constant_wait_time = 1
+constant_wait_time = 2
 
 # Load Prompts
 prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_combined.json"
@@ -58,17 +58,19 @@ def submit_request(address, agent_name, agent_email, description, max_retries=5)
 
             if response.status_code == 200:
                 if "choices" in response_json and response_json["choices"]:
-
-                    # Print the token usage
-                    tokens_used = response_json.get("usage", {}).get("total_tokens", "Unknown")
-                    print(f"Tokens used: {tokens_used}")
+                    
+                    # Output input and response tokens separately
+                    input_tokens = response_json.get("usage", {}).get("prompt_tokens", "Unknown")
+                    response_tokens = response_json.get("usage", {}).get("completion_tokens", "Unknown")
+                    print(f"Input tokens: {input_tokens}")
+                    print(f"Response tokens: {response_tokens}\n")
 
                     return response_json["choices"][0]["message"]["content"]
                 else:
                     raise KeyError("Missing 'choices' key in API response.")
             
             elif response.status_code == 429:
-                wait_time = 2 ** retries # Exponential backoff (2, 4, 8, 16... sec)
+                wait_time = 2 ** retries  # Exponential backoff (2, 4, 8, 16... sec)
                 print(f"Rate limited. Retrying in {wait_time} seconds...")
                 time.sleep(wait_time)
                 retries += 1
@@ -93,7 +95,7 @@ count = 0
 
 try:
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
-        print(f"Row {count+1} of {N}")
+        print(f"Row {count+1} of {N}\n")
         address = df.at[index, 'Address Line 1']
         description = df.at[index, 'Description']
         agent_name = df.at[index, 'Agent Name']
@@ -117,7 +119,6 @@ try:
                 print(f"Email: {new_email}")
                 print(f"Salutation: {salutation}")
                 print(f"Opening: {opening}")
-                
                 
                 df.at[index, 'Agent Email'] = new_email
                 df.at[index, 'salutation'] = salutation
@@ -143,7 +144,7 @@ try:
 
         df.at[index, 'video_line'] = video_line
         time.sleep(constant_wait_time)
-        print("--------------------")
+        print("---------------------------------------------------")
 
         count += 1
 
@@ -159,4 +160,4 @@ finally:
     total_count = len(df)
 
     print(f"\nUpdated {count} rows with customization values.")
-    print(f"{non_empty_count} of {total_count} rows have been completed.")
+    print(f"{non_empty_count} of {total_count} rows have been completed.\n")
