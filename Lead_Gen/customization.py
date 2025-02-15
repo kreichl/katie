@@ -7,6 +7,13 @@ import json
 # Number of Rows to Loop through
 N = 1
 
+# Prompts File
+email_opening_prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_email_opening.json"
+
+# Load Prompts
+with open(email_opening_prompts_file, 'r') as f:
+    prompts = json.load(f)
+
 # File Names
 original_csv_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\Cleaned_Leads_2025_02_14.csv"
 basename = os.path.basename(original_csv_file).replace(".csv", "")
@@ -19,7 +26,8 @@ if os.path.exists(pickle_file):
 else:
     # Load the CSV file into a DataFrame and add the 'customization' column
     df = pd.read_csv(original_csv_file)
-    df['customization'] = None 
+    df['email_opening'] = None 
+    df['video_line'] = None
 
 # OpenAI API Information
 api_key = os.getenv('OPENAI_API_KEY')
@@ -31,9 +39,30 @@ headers = {
     'Authorization': f'Bearer {api_key}'
 }
 
+
+def submit_request(address, agent_name, description):
+
+    # Generate Input String
+    input_string = f"Agent Name: {agent_name}\nListing Address: {address}\nListing Description:\"{description}\"\n\nGenerate an email opening."
+
+    # Add to JSON
+    data = prompts.copy()
+    data["messages"].append({
+        "role": "user",
+        "content": input_string
+    })
+
+    # Send Request and Extract Response
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    response_json = response.json()
+    email_opening = response_json['choices'][0]['message']['content']
+    
+    return email_opening
+
+
 # Loop through rows
 count = 0
-for index, row in df[df['customization'].isnull()].head(N).iterrows():
+for index, row in df[df['video_line'].isnull()].head(N).iterrows():
 
     # Extract Relevant Data
     address = df.at[index, 'Address Line 1']
@@ -47,11 +76,30 @@ for index, row in df[df['customization'].isnull()].head(N).iterrows():
     print(f"Matterport: {matterport_exists}")
     print(f"Video Tour: {video_tour_exists}")
 
-    # If no Video or Matterport
+    # Generate Customized Email Opening
+    email_opening = submit_request(address, agent_name, description)
+    df.at[index, 'email_opening'] = [email_opening]
+    print(email_opening)
+
+    # Create Video Line
     if not video_tour_exists and not matterport_exists:
-        print(f"{address}")
-    
-    # df.at[index, 'customization'] = ["Video"]
+        video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video. A well-crafted video can capture the lifestyle this home offers and attract more interested buyers."
+
+    elif matterport_exists:
+        video_line = "I’d love to complement your Matterport tour with a professionally edited video to highlight the home’s best features and lifestyle. If you have future listings without a Matterport, this video could be a great alternative to engage more buyers."
+
+    elif video_tour_exists:
+        video_line = "I see you’re already using listing videos, which is a great way to attract buyers. If you’d like to explore an alternative option, I’d be happy to help."
+
+    else:
+        video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video. A well-crafted video can capture the lifestyle this home offers and attract more interested buyers."
+
+    print(video_line)
+
+    df.at[index, 'video_line'] = video_line
+
+    # Check Email Field
+    current_email = df.at[index, 'Agent Email']
 
     count += 1
 
