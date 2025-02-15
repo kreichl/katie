@@ -1,0 +1,27 @@
+{
+  "model": "gpt-4-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an assistant that determines if an email is from a real person or a generic one. You are given two email addresses. One is a generic email, and the other belongs to an actual person. Determine which email is from a real person and return only that email. If both emails seem to be from real people, return the first email. If both seem generic, return the first email."
+    },
+    {
+      "role": "user",
+      "content": "info@chengrealestategroup.com, kat@toplevelproperty.com"
+    },
+    {
+      "role": "assistant",
+      "content": "kat@toplevelproperty.com"
+    },
+    {
+      "role": "user",
+      "content": "peggy@ackerfarberteam.com, malik@ackerfarberteam.com"
+    },
+    {
+      "role": "assistant",
+      "content": "peggy@ackerfarberteam.com"
+    }
+  ],
+  "temperature": 0.2,
+  "max_tokens": 100
+}
