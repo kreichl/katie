@@ -63,11 +63,11 @@ def submit_request(address, agent_name, agent_email, description, max_retries=5)
                     input_tokens = response_json.get("usage", {}).get("prompt_tokens", "Unknown")
                     response_tokens = response_json.get("usage", {}).get("completion_tokens", "Unknown")
                     total_tokens = response_json.get("usage", {}).get("total_tokens", "0")
-                    cost_cents = total_tokens * (0.150/1e6*100) # GPT-4o Mini costs $0.150 per 1,000,000 tokens
+                    cost = total_tokens * (0.150/1e6) # GPT-4o Mini costs $0.150 per 1,000,000 tokens
 
                     print(f"Input tokens: {input_tokens}")
                     print(f"Response tokens: {response_tokens}")
-                    print(f"Cost: {cost_cents:,.4f} cents\n")
+                    print(f"Cost: ${cost*1000:,.4f} per 1,000 rows\n")
 
                     return response_json["choices"][0]["message"]["content"]
                 else:
