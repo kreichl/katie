@@ -7,7 +7,7 @@ import logging
 
 # Constants for process control
 N = 3  # Number of rows to process in one run
-constant_wait_time = 2  # Time to wait between requests (in seconds)
+constant_wait_time = 0  # Time to wait between requests (in seconds)
 
 # Get the directory of the current script
 script_folder = os.path.dirname(os.path.abspath(__file__))
@@ -85,9 +85,9 @@ def generate_ai_request(prompts_file, user_prompt, max_retries=5):
                     total_tokens = response_json.get("usage", {}).get("total_tokens", "0")
                     cost = total_tokens * (0.150/1e6)
 
-                    logging.info(f"Input tokens: {input_tokens}")
-                    logging.info(f"Response tokens: {response_tokens}")
-                    logging.info(f"Cost: ${cost*1000:,.4f} per 1,000 rows\n")
+                    # logging.info(f"Input tokens: {input_tokens}")
+                    # logging.info(f"Response tokens: {response_tokens}")
+                    # logging.info(f"Cost: ${cost*1000:,.4f} per 1,000 rows\n")
 
                     return response_json["choices"][0]["message"]["content"]
                 else:
@@ -96,6 +96,7 @@ def generate_ai_request(prompts_file, user_prompt, max_retries=5):
             elif response.status_code == 429:
                 wait_time = 2 ** retries
                 logging.warning(f"Rate limited. Retrying in {wait_time} seconds...")
+                print(f"Rate limited. Retrying in {wait_time} seconds...")
                 time.sleep(wait_time)
                 retries += 1
                 continue
@@ -104,13 +105,16 @@ def generate_ai_request(prompts_file, user_prompt, max_retries=5):
 
         except requests.exceptions.RequestException as e:
             logging.error(f"Request failed: {e}")
+            print(f"Request failed: {e}")
             break
 
         except json.JSONDecodeError:
-            logging.error("Error: Response is not valid JSON.")
+            logging.error("Response is not valid JSON.")
+            print("Error: Response is not valid JSON.")
             break
     
     logging.error("Max retries reached. Skipping this request.")
+    print("Error: Max retries reached. Skipping this request.")
     return None
 
 
@@ -141,7 +145,7 @@ count = 0
 try:
     # Process rows that haven't been customized yet
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
-        logging.info(f"Processing row {count+1} of {N}\n")
+        print(f"Processing row {count+1} of {N}")
 
         # Extract details for the current row
         address = df.at[index, 'Address Line 1']
@@ -170,9 +174,11 @@ try:
                 logging.info(f"Opening: {response_json.get('opening', '')}\n")
 
             except json.JSONDecodeError:
-                logging.error("Error: AI Model did not return its response in JSON")
+                logging.error("AI Model did not return its response in JSON")
+                print("Error: AI Model did not return its response in JSON")
         else:
-            logging.error("Error: No email opening generated.")
+            logging.error("No email opening generated.")
+            print("Error: No email opening generated.")
 
         # Create a customized video line based on the links available
         video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video."
@@ -187,11 +193,12 @@ try:
 
 except Exception as e:
     logging.critical(f"Critical Error Encountered: {e}")
+    print(f"Critical Error Encountered: {e}")
     
 finally:
     # Save the updated DataFrame to the new CSV file
     df.to_csv(csv_file, index=False)
     non_empty_count = df['video_line'].notnull().sum()
     total_count = len(df)
-    logging.info(f"Updated {count} rows with customization values.")
-    logging.info(f"{non_empty_count} of {total_count} rows have been completed.\n")
+    print(f"\nUpdated {count} rows with customization values.")
+    print(f"{non_empty_count} of {total_count} rows have been completed.\n")
