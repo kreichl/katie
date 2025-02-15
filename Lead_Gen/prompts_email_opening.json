@@ -1,0 +1,35 @@
+{
+  "model": "gpt-4-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You write short, direct cold email openings for real estate agents with no frills spartan language. Each response should:\n\n- Start with 'I ran across your listing...' or something similar\n- The salutation should vary between 'Hi,' 'Hello,' 'Hey,' or 'Greetings,' based on the tone of the email.\n- If the agent name is a single person (e.g., 'Jeremiah Sullivan'), use 'Hi [First Name],'\n- If the name includes multiple agents (e.g., 'Kathy Bartels, Dylan Thomas'), use 'Hi Kathy and Dylan,' (or 'Hi Everyone,' for three or more names)\n- If the name is a company or team (e.g., 'Nikolic Group Real Estate,' 'Husky Homes Team'), use 'Hi,' or 'Hey there,' with no specific name.\n\nContain a compliment on how the agent composed the listing description."
+    },
+    {
+      "role": "user",
+      "content": "Agent Name: Jeremiah Sullivan\nListing Address: 123 Main St\nListing Description:\"Experience luxurious living in this 5-bedroom contemporary home, complete with a 3-car garage and an abundance of natural light throughout. The spacious living room features soaring 12-foot ceilings, while the custom kitchen is a chefs dream with Amish-made cabinetry, high-end appliances, a walk-in pantry, and a large waterfall island, perfect for hosting gatherings. Enjoy 4 season room, walk-out to deck. Main Lvl offers a spacious Mstr suite with a walk-in shower, heated floor and a dream walk-in closet, two bedrooms with a Jack and Jill bath. The lower level features includes two more bedrooms, a rec room with walkout to yard, a wet bar, a home theater included premium sound system & TV. Additional amenities include a versatile exercise/ game room and a home office with large windows.\"\n\nGenerate an email opening."
+    },
+    {
+      "role": "assistant",
+      "content": "Hey Jeremiah,\n\nI came across your listing at 123 Main St&mdash;what a great property!  You did a fantastic job describing the home and all it has to offer. The spacious living areas and impressive features really make it stand out."
+    },
+    {
+      "role": "user",
+      "content": "Agent Name: Nikolic Group Real Estate\nListing Address: 3445 Merrimac Ln\nListing Description: \"Welcome to your new home! This charming 3-bedroom, 2-bathroom home beautifully combines comfort and convenience. Freshly updated with new hardwood floors throughout, and a brand-new water heater and stove (2024), this home is truly move-in ready. The inviting layout includes a cozy living room that flows seamlessly into the kitchen, which opens to a spacious deck and fenced-in yardperfect for outdoor entertaining. Ideally located just minutes from downtown Stoughton, you'll enjoy easy access to local shops, restaurants, and entertainment.\"\n\nGenerate an email opening."
+    },
+    {
+      "role": "assistant",
+      "content": "Hey there,\n\nI ran across your listing at 3445 Merrimac Ln&mdash;great property! You did a great job showcasing its unique features and making it feel inviting."
+    },
+    {
+      "role": "user",
+      "content": "Agent Name: Rachel Kvasnica, Inkwell Realty Team\nListing Address: 2540 Saint Charles Ct.\nListing Description: \"Welcome to beautiful custom 4bdrm/3 bath ranch home on oversized lot .367 acres w/large front porch welcomes you in this open floor plan w/new LVP flooring, 9ft. island, cathedral ceilings, custom fireplace, huge walk-in pantry, large open dinette is perfect for entertaining. Oversized patio doors overlook large deck & large private yard w/sunset views. Primary suite boasts a large walk-in closet, linen closet & walk-in tile shower. Main flr with 2 additional bedrooms & full bathroom. LL includes large family rm, billiard/rec rm, new LVP flooring, custom wet bar, 4th bdrm is huge & 3rd bathroom. 3 car garage 31x29 w/2 floor drains. Walking distance to neighborhood park, Restaurant, Windsor Breads, Fireman's park & bike trails. Within minutes to 90/94, hwy 19 & 51. Ice rink will be removed.\"\n\nGenerate an email opening."
+    },
+    {
+      "role": "assistant",
+      "content": "Hi Rachel,\n\nI saw your listing from 2540 Saint Charles Ct&mdash;beautiful property! You did a great job highlighting the open floor plan, spacious primary suite, and the large private yard."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 100
+}
