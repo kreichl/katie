@@ -1,0 +1,39 @@
+{
+    "model": "gpt-4-turbo",
+    "messages": [
+    {
+        "role": "system",
+        "content": "You are an assistant that performs three tasks and outputs a structured JSON response:\n\n1. Determine which email in a given pair is from a real person and return only that email. If both emails seem to be from real people, return the first email. If both seem generic, return the first email.\n\n2. Generate a salutation that varies between 'Hi,' 'Hello,' 'Hey,' or 'Greetings,' based on the tone of the email. The name used in the salutation should match the name used in the email.\n - If the agent name is a single person (e.g., 'Jeremiah Sullivan'), use 'Hi [First Name],'\n   - If the name includes multiple agents use a single name. The one that matchs the email should be used\n   - If the name is a company or team, see if the email address has a first name otherwise use 'Hi,' or 'Hey there,' with no specific name.\n\n3. Write short, direct cold email openings for real estate agents with no frills and spartan language. Each response should:\n   - Start with 'I ran across your listing...' or something similar.\n   - Contain a compliment on how the agent composed the listing description.\n\nReturn the response in the following JSON format:\n{\n  \"email\": \"[selected email]\",\n  \"salutation\": \"[salutation]\",\n  \"opening\": \"[email opening message]\"\n}"
+        },
+      {
+        "role": "user",
+        "content":  "Agent Name: Ryan Oliversen\nAgent Email: roliversen@bunburyrealtors.com\nListing Address: 123 Main St\nListing Description:\"Experience luxurious living in this 5-bedroom contemporary home, complete with a 3-car garage and an abundance of natural light throughout. The spacious living room features soaring 12-foot ceilings, while the custom kitchen is a chefs dream with Amish-made cabinetry, high-end appliances, a walk-in pantry, and a large waterfall island, perfect for hosting gatherings. Enjoy 4 season room, walk-out to deck. Main Lvl offers a spacious Mstr suite with a walk-in shower, heated floor and a dream walk-in closet, two bedrooms with a Jack and Jill bath. The lower level features includes two more bedrooms, a rec room with walkout to yard, a wet bar, a home theater included premium sound system & TV. Additional amenities include a versatile exercise/ game room and a home office with large windows.\"\n\nGenerate an email opening."
+      },
+      {
+        "role": "assistant",
+        "content": "{{\"email\":\"roliversen@bunburyrealtors.com\",\"salutation\":\"Hey Ryan,\", \"opening\":\"I came across your listing at 123 Main St. You did a fantastic job describing the home and all it has to offer. The spacious living areas and impressive features really make it stand out.\"}}"
+      },
+      {
+        "role": "user",
+        "content": "Agent Name: MHB Real Estate Team, Dustin Laufenberg \nAgent Email:leads@mhbrealestate.com, dustin@mhbrealestate.com\nListing Address: 3445 Merrimac Ln\nListing Description: \"Welcome to your new home! This charming 3-bedroom, 2-bathroom home beautifully combines comfort and convenience. Freshly updated with new hardwood floors throughout, and a brand-new water heater and stove (2024), this home is truly move-in ready. The inviting layout includes a cozy living room that flows seamlessly into the kitchen, which opens to a spacious deck and fenced-in yardperfect for outdoor entertaining. Ideally located just minutes from downtown Stoughton, you'll enjoy easy access to local shops, restaurants, and entertainment.\"\n\nGenerate an email opening."
+      },
+      {
+        "role": "assistant",
+        "content": "{{\"email\":\"dustin@mhbrealestate.com\",\"salutation\":\"Hi Dustin,\", \"opening\":\"I ran across your listing at 3445 Merrimac Ln. You did a great job showcasing its unique features and making it feel inviting.\"}}"
+      },
+      {
+        "role": "user",
+        "content": "Agent Name: Josh Lavik, Ruth Wangerin\nAgent Email: josh@joshlavik.com, ruthwangerin@kw.com\nListing Address: 2540 Saint Charles Ct.\nListing Description: \"Welcome to beautiful custom 4bdrm/3 bath ranch home on oversized lot .367 acres w/large front porch welcomes you in this open floor plan w/new LVP flooring, 9ft. island, cathedral ceilings, custom fireplace, huge walk-in pantry, large open dinette is perfect for entertaining. Oversized patio doors overlook large deck & large private yard w/sunset views. Primary suite boasts a large walk-in closet, linen closet & walk-in tile shower. Main flr with 2 additional bedrooms & full bathroom. LL includes large family rm, billiard/rec rm, new LVP flooring, custom wet bar, 4th bdrm is huge & 3rd bathroom. 3 car garage 31x29 w/2 floor drains. Walking distance to neighborhood park, Restaurant, Windsor Breads, Fireman's park & bike trails. Within minutes to 90/94, hwy 19 & 51. Ice rink will be removed.\"\n\nGenerate an email opening."
+      },
+      {
+        "role": "assistant",
+        "content": "{{\"email\":\"josh@joshlavik.com\",\"salutation\":\"Hi Josh,\", \"opening\":\"I saw your listing from 2540 Saint Charles Ct&mdash;beautiful property! You did a great job highlighting the open floor plan, spacious primary suite, and the large private yard.\"}}"
+      }
+    ],
+    "temperature": 0.7,
+    "max_tokens": 150
+  }
+
+
+
+  
