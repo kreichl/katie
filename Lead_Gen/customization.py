@@ -6,8 +6,8 @@ import time
 import logging
 
 # Constants for process control
-N = 100  # Number of rows to process in one run
-constant_wait_time = 10  # Time to wait between requests (in seconds)
+N = 1000  # Number of rows to process in one run
+constant_wait_time = 8  # Time to wait between requests (in seconds)
 
 # Get the directory of the current script
 script_folder = os.path.dirname(os.path.abspath(__file__))
@@ -17,7 +17,7 @@ log_file = os.path.join(script_folder, "customization_process.log")
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,
-    format='%(levelname)s | %(message)s',
+    format='%(asctime)s | %(levelname)s | %(message)s',
 )
 
 # Load opening prompts from a JSON file
@@ -145,7 +145,7 @@ count = 0
 try:
     # Process rows that haven't been customized yet
     for index, row in df[df['video_line'].isnull()].head(N).iterrows():
-        print(f"Processing row {count+1} of {N}")
+        print(f"Processing row {count+1} of {N} (Row {index+1})")
 
         # Extract details for the current row
         address = df.at[index, 'Address Line 1']
