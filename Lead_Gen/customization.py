@@ -4,7 +4,7 @@ import requests
 import json
 
 # Number of Rows to Loop through
-N = 10
+N = 100
 
 # Prompts File
 email_opening_prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_email_opening.json"
@@ -26,9 +26,8 @@ csv_file = os.path.join(os.path.dirname(original_csv_file), f"Customized_{basena
 if os.path.exists(pickle_file):
     df = pd.read_pickle(pickle_file)
 else:
-    # Load the CSV file into a DataFrame and add the 'customization' column
     df = pd.read_csv(original_csv_file)
-    df['email_opening'] = None 
+    df['email_opening'] = None
     df['video_line'] = None
 
 # OpenAI API Information
@@ -42,95 +41,110 @@ headers = {
 }
 
 def submit_request_opening(address, agent_name, description):
-
-    # Generate Input String
+    """Submits a request to OpenAI API to generate an email opening."""
+    
     input_string = f"Agent Name: {agent_name}\nListing Address: {address}\nListing Description:\"{description}\"\n\nGenerate an email opening."
-
-    # Add to JSON
+    
     data = opening_prompts.copy()
     data["messages"].append({
         "role": "user",
         "content": input_string
     })
 
-    # Send Request and Extract Response
-    response = requests.post(url, headers=headers, data=json.dumps(data))
-    response_json = response.json()
-    email_opening = response_json['choices'][0]['message']['content']
-    
-    return email_opening
+    try:
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response_json = response.json()
+
+        # Ensure valid response
+        if response.status_code != 200:
+            raise ValueError(f"API Error {response.status_code}: {response_json}")
+
+        if "choices" not in response_json or not response_json["choices"]:
+            raise KeyError("Missing 'choices' key in API response.")
+
+        return response_json["choices"][0]["message"]["content"]
+
+    except Exception as e:
+        print(f"Error in submit_request_opening: {e}")
+        return None  # Return None if an error occurs
 
 def submit_request_duplicates(email):
-
-    # Generate Input String
-    input_string = email
-
-    # Add to JSON
+    """Submits a request to OpenAI API to process duplicate emails."""
+    
     data = duplicate_prompts.copy()
     data["messages"].append({
         "role": "user",
-        "content": input_string
+        "content": email
     })
 
-    # Send Request and Extract Response
-    response = requests.post(url, headers=headers, data=json.dumps(data))
-    response_json = response.json()
-    single_email = response_json['choices'][0]['message']['content']
-    
-    return single_email
+    try:
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response_json = response.json()
 
+        # Ensure valid response
+        if response.status_code != 200:
+            raise ValueError(f"API Error {response.status_code}: {response_json}")
 
-# Loop through rows
+        if "choices" not in response_json or not response_json["choices"]:
+            raise KeyError("Missing 'choices' key in API response.")
+
+        return response_json["choices"][0]["message"]["content"]
+
+    except Exception as e:
+        print(f"Error in submit_request_duplicates: {e}")
+        return email  # Return original email if an error occurs
+
+# Main Processing Loop
 count = 0
-for index, row in df[df['video_line'].isnull()].head(N).iterrows():
 
-    # Extract Relevant Data
-    address = df.at[index, 'Address Line 1']
-    description = df.at[index, 'Description']
-    agent_name = df.at[index, 'Agent Name']
-    agent_email = df.at[index, 'Agent Email']
-    video_tour_link = df.at[index, 'Video Tour Link']
-    matterport_link = df.at[index, 'Matterport Link']
-    video_tour_exists = not pd.isna(video_tour_link)
-    matterport_exists = not pd.isna(matterport_link)
+try:
+    for index, row in df[df['video_line'].isnull()].head(N).iterrows():
+        address = df.at[index, 'Address Line 1']
+        description = df.at[index, 'Description']
+        agent_name = df.at[index, 'Agent Name']
+        agent_email = df.at[index, 'Agent Email']
+        video_tour_link = df.at[index, 'Video Tour Link']
+        matterport_link = df.at[index, 'Matterport Link']
+        video_tour_exists = not pd.isna(video_tour_link)
+        matterport_exists = not pd.isna(matterport_link)
 
-    # Generate Customized Email Opening
-    email_opening = submit_request_opening(address, agent_name, description)
-    df.at[index, 'email_opening'] = email_opening
-    print("--------------------")
-    print(email_opening)
+        # Generate Customized Email Opening
+        email_opening = submit_request_opening(address, agent_name, description)
+        df.at[index, 'email_opening'] = email_opening
 
-    # Create Video Line
-    if not video_tour_exists and not matterport_exists:
-        video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video. A well-crafted video can capture the lifestyle this home offers and attract more interested buyers."
+        print("--------------------")
+        print(email_opening if email_opening else "Error: No email opening generated.")
 
-    elif matterport_exists:
-        video_line = "I’d love to complement your Matterport tour with a professionally edited video to highlight the home’s best features and lifestyle. If you have future listings without a Matterport, this video could be a great alternative to engage more buyers."
+        # Create Video Line
+        if not video_tour_exists and not matterport_exists:
+            video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video."
+        elif matterport_exists:
+            video_line = "I’d love to complement your Matterport tour with a professionally edited video."
+        elif video_tour_exists:
+            video_line = "I see you’re already using listing videos, which is a great way to attract buyers."
+        else:
+            video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video."
 
-    elif video_tour_exists:
-        video_line = "I see you’re already using listing videos, which is a great way to attract buyers. If you’d like to explore an alternative option, I’d be happy to help."
+        df.at[index, 'video_line'] = video_line
 
-    else:
-        video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video. A well-crafted video can capture the lifestyle this home offers and attract more interested buyers."
+        # Check Email Field
+        if "," in agent_email:
+            single_email = submit_request_duplicates(agent_email)
+            df.at[index, 'Agent Email'] = single_email
 
-    df.at[index, 'video_line'] = video_line
+        count += 1
 
-    # Check Email Field
-    current_email = df.at[index, 'Agent Email']
-    if "," in current_email:
-        single_email = submit_request_duplicates(current_email)
-        print(single_email)
-        df.at[index, 'Agent Email'] = single_email
+except Exception as e:
+    print(f"\nCritical Error Encountered: {e}")
+    
+finally:
+    # Save progress before exiting
+    df.to_csv(csv_file, index=False)
+    df.to_pickle(pickle_file)
+    
+    # Display stats
+    non_empty_count = df['video_line'].notnull().sum()
+    total_count = len(df)
 
-    count += 1
-
-# Save the modified DataFrame as both CSV and pickle files
-df.to_csv(csv_file, index=False)
-df.to_pickle(pickle_file)
-
-# Display Stats
-non_empty_count = df['video_line'].notnull().sum()
-total_count = len(df)
-
-print(f"Updated {count} rows with customization values.")
-print(f"{non_empty_count} of {total_count} rows have be completed.")
+    print(f"\nUpdated {count} rows with customization values.")
+    print(f"{non_empty_count} of {total_count} rows have been completed.")
