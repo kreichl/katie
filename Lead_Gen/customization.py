@@ -5,14 +5,17 @@ import requests
 import json
 
 # Number of Rows to Loop through
-N = 1
+N = 10
 
 # Prompts File
 email_opening_prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_email_opening.json"
+email_duplicates_prompts_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\prompts_multiple_emails.json"
 
 # Load Prompts
 with open(email_opening_prompts_file, 'r') as f:
-    prompts = json.load(f)
+    opening_prompts = json.load(f)
+with open(email_duplicates_prompts_file, 'r') as f:
+    duplicate_prompts = json.load(f)
 
 # File Names
 original_csv_file = r"C:\Users\reich\Documents\GIT\katie\Lead_Gen\Cleaned_Leads_2025_02_14.csv"
@@ -39,14 +42,13 @@ headers = {
     'Authorization': f'Bearer {api_key}'
 }
 
-
-def submit_request(address, agent_name, description):
+def submit_request_opening(address, agent_name, description):
 
     # Generate Input String
     input_string = f"Agent Name: {agent_name}\nListing Address: {address}\nListing Description:\"{description}\"\n\nGenerate an email opening."
 
     # Add to JSON
-    data = prompts.copy()
+    data = opening_prompts.copy()
     data["messages"].append({
         "role": "user",
         "content": input_string
@@ -59,6 +61,25 @@ def submit_request(address, agent_name, description):
     
     return email_opening
 
+def submit_request_duplicates(email):
+
+    # Generate Input String
+    input_string = email
+
+    # Add to JSON
+    data = duplicate_prompts.copy()
+    data["messages"].append({
+        "role": "user",
+        "content": input_string
+    })
+
+    # Send Request and Extract Response
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    response_json = response.json()
+    single_email = response_json['choices'][0]['message']['content']
+    
+    return single_email
+
 
 # Loop through rows
 count = 0
@@ -68,18 +89,16 @@ for index, row in df[df['video_line'].isnull()].head(N).iterrows():
     address = df.at[index, 'Address Line 1']
     description = df.at[index, 'Description']
     agent_name = df.at[index, 'Agent Name']
+    agent_email = df.at[index, 'Agent Email']
     video_tour_link = df.at[index, 'Video Tour Link']
     matterport_link = df.at[index, 'Matterport Link']
     video_tour_exists = not pd.isna(video_tour_link)
     matterport_exists = not pd.isna(matterport_link)
 
-    print(f"Matterport: {matterport_exists}")
-    print(f"Video Tour: {video_tour_exists}")
-
     # Generate Customized Email Opening
-    email_opening = submit_request(address, agent_name, description)
-    df.at[index, 'email_opening'] = [email_opening]
-    print(email_opening)
+    # email_opening = submit_request(address, agent_name, description)
+    # df.at[index, 'email_opening'] = [email_opening]
+    # print(email_opening)
 
     # Create Video Line
     if not video_tour_exists and not matterport_exists:
@@ -94,12 +113,15 @@ for index, row in df[df['video_line'].isnull()].head(N).iterrows():
     else:
         video_line = "I’d love to help bring even more attention to your future listings with a professionally edited video. A well-crafted video can capture the lifestyle this home offers and attract more interested buyers."
 
-    print(video_line)
-
     df.at[index, 'video_line'] = video_line
 
     # Check Email Field
     current_email = df.at[index, 'Agent Email']
+    if "," in current_email:
+        print(current_email)
+        single_email = submit_request_duplicates(current_email)
+        print(single_email)
+        df.at[index, 'Agent Email'] = single_email
 
     count += 1
 
@@ -108,7 +130,7 @@ df.to_csv(csv_file, index=False)
 df.to_pickle(pickle_file)
 
 # Display Stats
-non_empty_count = df['customization'].notnull().sum()
+non_empty_count = df['video_line'].notnull().sum()
 total_count = len(df)
 
 # print(f"Updated {count} rows with customization values.")
