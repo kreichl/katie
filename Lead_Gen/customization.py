@@ -96,7 +96,7 @@ for index, row in df[df['video_line'].isnull()].head(N).iterrows():
 
     # Generate Customized Email Opening
     email_opening = submit_request_opening(address, agent_name, description)
-    df.at[index, 'email_opening'] = [email_opening]
+    df.at[index, 'email_opening'] = email_opening
     print("--------------------")
     print(email_opening)
 
