@@ -6,8 +6,8 @@ import time
 import logging
 
 # Constants for process control
-N = 3  # Number of rows to process in one run
-constant_wait_time = 0  # Time to wait between requests (in seconds)
+N = 100  # Number of rows to process in one run
+constant_wait_time = 10  # Time to wait between requests (in seconds)
 
 # Get the directory of the current script
 script_folder = os.path.dirname(os.path.abspath(__file__))
@@ -200,5 +200,8 @@ finally:
     df.to_csv(csv_file, index=False)
     non_empty_count = df['video_line'].notnull().sum()
     total_count = len(df)
+
+    # Print Status
     print(f"\nUpdated {count} rows with customization values.")
     print(f"{non_empty_count} of {total_count} rows have been completed.\n")
+    logging.info(f"{non_empty_count} of {total_count} rows have been completed.\n")
