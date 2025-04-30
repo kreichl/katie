@@ -164,3 +164,4 @@ Scraping/HTML_files/*
 Scraping/text_files/*
 Lead_Gen/Raw_Data*/*
 
+upwork_scrape/html_cache/*
