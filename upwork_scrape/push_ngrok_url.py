@@ -14,11 +14,16 @@ except Exception as e:
 
 print("ngrok public URL:", public_url)
 
-# 2. Send the URL to Make.com via webhook
-webhook_url = "https://hook.us2.make.com/sob2e12my47qxkan9c3cgg34xiefbopi"
+# 2. Define payload
 payload = {
-    "ngrok_url": public_url
+    "action": "start_applying",
+    "data": {
+        "ngrok_url": public_url
+    }
 }
 
+# 3. Send to Make.com
+webhook_url = "https://hook.us2.make.com/sob2e12my47qxkan9c3cgg34xiefbopi"
 res = requests.post(webhook_url, json=payload)
+
 print(f"Sent to Make ({res.status_code}):", res.text)
