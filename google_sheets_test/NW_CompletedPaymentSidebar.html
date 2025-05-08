@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        padding: 10px;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+      .info-box {
+        background: #f2f2f2;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .info-box p {
+        margin: 4px 0;
+        font-size: 14px;
+      }
+      .intro {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 16px;
+      }
+      .message {
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      .message.error {
+        color: red;
+      }
+      button {
+        padding: 10px 16px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Confirm Completed Payment</h2>
+    <div id="content">
+      <p class="intro">Validating payment details...</p>
+    </div>
+    <div id="messageBox" class="message"></div>
+
+    <script>
+      function renderSidebar(data) {
+        const container = document.getElementById("content");
+
+        if (!data) {
+          console.error("Sidebar error: No data received.");
+          container.innerHTML = `<div class="message error">❌ Failed to load payment data (no data returned).</div>`;
+          return;
+        }
+
+        console.log("Sidebar data received:", data);
+
+        if (data.valid === false) {
+          container.innerHTML = `
+            <div class="message error">${data.message}</div>
+            <div class="intro">Row: <b>${data.row}</b></div>
+            <button onclick="revalidate()">Revalidate</button>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="intro">
+              Row: <b>${data.row}</b><br>
+            </div>
+            <div class="info-box">
+              <p><b>Trade:</b> ${data.trade}</p>
+              <p><b>Subcontractor:</b> ${data.subcontractor || 'N/A'}</p>
+              <p><b>Date:</b> ${new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(data.actualDate))}</p>
+              <p><b>Amount:</b> $${data.actualAmount}</p>
+              <p><b>Description:</b> ${data.description}</p>
+            </div>
+            <div class="intro">
+              This completed payment will be moved to the job cost sheet for the <b>${data.project} - Costs</b> project.
+            </div>
+            <button onclick="confirmMove()">Confirm</button>
+          `;
+        }
+      }
+
+      function confirmMove() {
+        google.script.run.withSuccessHandler(() => {
+          showMessage("✅ Payment successfully moved to Project Costs sheet.", "success");
+          setTimeout(() => {
+            google.script.host.close();
+          }, 3000);
+        }).moveRowToProjectCosts();
+      }
+
+      function revalidate() {
+        showMessage("Revalidating...", "");
+        google.script.run
+          .withSuccessHandler(renderSidebar)
+          .withFailureHandler(err => {
+            console.error("Revalidate error:", err.message);
+            document.getElementById("content").innerHTML = `<div class="message error">❌ Revalidation failed: ${err.message}</div>`;
+          })
+          .getSidebarData();
+      }
+
+      function showMessage(msg, type) {
+        const box = document.getElementById("messageBox");
+        box.innerText = msg;
+        box.className = "message " + type;
+      }
+
+      // Initial render
+      google.script.run
+        .withSuccessHandler(function(data) {
+          console.log("Initial sidebar data received:", data);
+          renderSidebar(data);
+        })
+        .withFailureHandler(function(err) {
+          console.error("Initial sidebar load failed:", err.message);
+          document.getElementById("content").innerHTML = `<div class="message error">❌ Sidebar failed to load: ${err.message}</div>`;
+        })
+        .getSidebarData();
+    </script>
+
+  </body>
+</html>
