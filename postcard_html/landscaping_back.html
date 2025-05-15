@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 6.25in;
+      height: 4.25in;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fffbe6;
+      box-sizing: border-box;
+    }
+    .content {
+      position: absolute;
+      top: 0.5in;
+      left: 0.5in;
+      right: 2.25in;
+      bottom: 0.5in;
+      padding-right: 0.5in;
+      color: #333;
+    }
+    .message {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .discount {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 12px 0;
+      color: #217a00;
+    }
+    .cta-label {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+    .cta-text {
+      font-size: 15px;
+      font-weight: normal;
+    }
+    .footer {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="message">
+      Hey {{to.firstName}},<br>
+      To welcome spring, we’re offering:
+    </div>
+    <div class="discount">
+      $50 OFF your first service if booked by April 15th.
+    </div>
+    <div class="cta-label">
+      Book online:
+      <span class="cta-text">www.greenscapeco.com/spring</span>
+    </div>
+    <div class="cta-label" style="margin-top: 8px;">
+      Or call us:
+      <span class="cta-text">(555) 123-4567</span>
+    </div>
+    <div class="footer">
+      Let’s get your yard looking its best this spring.<br>
+      – The GreenScape Co Team
+    </div>
+  </div>
+</body>
+</html>
