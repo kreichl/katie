@@ -17,6 +17,7 @@ BACKGROUND_FILENAME = "Background_Music.mp3"
 VOICE_PATTERN = r"^\d+_.*\.mp3$"  # Matches files like 01_Referrals.mp3
 INTRO_DELAY_MS = 1000             # Delay before first voice clip (in ms)
 OUTRO_DELAY_MS = 6000             # Delay after each voice clip (in ms)
+FINAL_BACKGROUND_MS = 5000        # Final pad of background music
 BACKGROUND_VOLUME_DUCK_DB = -13   # Volume reduction of background under voice      
 FADE_IN_VOICE_MS = 700            # Duration for fade in transitions (in ms)
 FADE_OUT_VOICE_MS = 1000          # Duration for fade out transitions (in ms)
@@ -54,8 +55,10 @@ for clip in voice_clips:
     total_duration += voice_len
 
 # Add final trailing background music
-bg_segment = background[total_duration:total_duration + OUTRO_DELAY_MS]
-timeline += bg_segment.fade_in(FADE_IN_VOICE_MS).fade_out(FADE_OUT_VOICE_MS)
+final_bg = loop_audio_to_length(background, FINAL_BACKGROUND_MS)
+final_bg = final_bg.fade_in(FADE_IN_VOICE_MS).fade_out(FADE_OUT_VOICE_MS)
+timeline += final_bg
+total_duration += FINAL_BACKGROUND_MS
 
 # === EXPORT ===
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
