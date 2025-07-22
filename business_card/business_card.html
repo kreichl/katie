@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katie Reichl - CapraFlow Business Card V2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+        }
+        
+        .business-card {
+            width: 3.5in;
+            height: 2in;
+            background: white;
+            border-radius: 0;
+            box-shadow: 0 8px 25px rgba(42, 77, 122, 0.15);
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-section {
+            flex: 1;
+            padding: 20px 20px 20px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(42, 77, 122, 0.02) 0%, rgba(42, 77, 122, 0.05) 100%);
+        }
+        
+        .right-section {
+            width: 120px;
+            background: linear-gradient(135deg, #2a4d7a 0%, #1e3a5f 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) 
+                    drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3));
+        }
+        
+        .brand-name {
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            margin-bottom: 12px;
+        }
+        
+        .name {
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2a4d7a;
+            margin-bottom: 2px;
+        }
+        
+        .title {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 9px;
+        }
+        
+        .contact-icon {
+            width: 14px;
+            height: 14px;
+            color: #2a4d7a;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            font-weight: 500;
+            color: #333;
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-size: 9px;
+            color: #666;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top: 8px;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .business-card {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="left-section">
+            <div class="header">
+                <div class="name">Katie Reichl</div>
+                <div class="title">Business Automation Consultant</div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <div class="contact-text">(262) 404-7012</div>
+                </div>
+                
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <div class="contact-text">katie@capraflow.com</div>
+                </div>
+                
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                    </svg>
+                    <div class="contact-text">capraflow.com</div>
+                </div>
+            </div>
+            
+            <div class="tagline">
+                We help small businesses work smarter, not harder
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <img src="logo.png" alt="CapraFlow Logo" class="logo">
+            <div class="brand-name">CapraFlow</div>
+        </div>
+    </div>
+</body>
+</html>
