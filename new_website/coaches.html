@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation for Online Coaches - CapraFlow</title>
+    <meta name="description" content="Scale your coaching business with AI automation. Streamline client onboarding, content creation, and communication. Free up 15+ hours per week to focus on transforming lives.">
+    <meta name="keywords" content="coaching automation, AI for coaches, online coach tools, coaching business automation, client management automation">
+    <meta name="author" content="Katie Reichl">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://capraflow.com/coaches">
+    <meta property="og:title" content="AI Automation for Online Coaches - CapraFlow">
+    <meta property="og:description" content="Scale your coaching business with hands-off systems. Automate client onboarding, content creation, and follow-ups.">
+    <meta property="og:image" content="https://capraflow.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://capraflow.com/coaches">
+    <meta property="twitter:title" content="AI Automation for Online Coaches - CapraFlow">
+    <meta property="twitter:description" content="Scale your coaching business with hands-off systems. Automate client onboarding, content creation, and follow-ups.">
+    <meta property="twitter:image" content="https://capraflow.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #e8e8e8;
+            background: #1a1a1a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            font-family: 'Montserrat Alternates', sans-serif;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #2a4d7a;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(42, 77, 122, 0.1) 0%, transparent 70%);
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #2a4d7a 0%, #1e3a5f 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(42, 77, 122, 0.3);
+            margin-right: 1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(42, 77, 122, 0.4);
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: #e8e8e8;
+            padding: 1.2rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about {
+            padding: 6rem 0;
+            background: #0f0f0f;
+        }
+        
+        .about h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .about-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(42, 77, 122, 0.3);
+        }
+        
+        .about-text {
+            text-align: left;
+        }
+        
+        .about-intro {
+            font-size: 1.3rem;
+            color: #e8e8e8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .about-closing {
+            margin-top: 1.5rem; 
+            color: #b0b0b0; 
+            font-style: italic;
+        }
+        
+        .pain-points {
+            padding: 6rem 0;
+            background: #1a1a1a;
+        }
+        
+        .pain-points h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .pain-points .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pain-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .pain-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .pain-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        .solutions {
+            padding: 6rem 0;
+            background: #0f0f0f;
+        }
+        
+        .solutions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(42, 77, 122, 0.3);
+        }
+        
+        .solution-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .solution-card p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefit-list li {
+            color: #2a4d7a;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .benefit-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .case-study {
+            padding: 6rem 0;
+            background: #0f0f0f;
+        }
+        
+        .case-study h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .case-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .case-header h3 {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-header .business-type {
+            color: #2a4d7a;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(42, 77, 122, 0.1);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2a4d7a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #2a4d7a 0%, #1e3a5f 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .contact {
+            padding: 6rem 0;
+            background: #1a1a1a;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #f0f0f0;
+            transition: all 0.3s;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #888;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2a4d7a;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(42, 77, 122, 0.1);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group select option {
+            background: #2d2d2d;
+            color: #ffffff;
+        }
+        
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #2a4d7a 0%, #1e3a5f 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .cta-section .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin-right: 0;
+        }
+        
+        .cta-section .cta-button:hover {
+            background: white;
+            color: #2a4d7a;
+        }
+        
+        footer {
+            background: #0f0f0f;
+            color: #888;
+            text-align: center;
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .social-links a {
+            color: #888;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            color: #2a4d7a;
+        }
+        
+                    @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .about-photo {
+                margin: 0 auto;
+            }
+            
+            .pain-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                <img src="logo.png" alt="CapraFlow Logo">
+                CapraFlow
+            </a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#case-studies">Case Studies</a></li>
+                <li><a href="/#services">Services</a></li>
+                <!-- <li><a href="/coaches">For Coaches</a></li> -->
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Scale Your Coaching Business with AI Automation</h1>
+                <p>Stop drowning in admin work. Automate client onboarding, content distribution, and follow-ups so you can focus on what you do best—transforming lives.</p>
+                <div class="cta-group">
+                    <a href="https://cal.com/katie-reichl/coaches-automation-audit" target="_blank" class="cta-button">Book Your Free 20-Min Automation Audit</a>
+                    <a href="/#contact" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2>About Katie</h2>
+                <div class="about-content">
+                    <img src="katie-photo.jpg" alt="Katie Reichl" class="about-photo">
+                    <div class="about-text">
+                        <p class="about-intro">
+                            I'm Katie, and I build smart, scalable systems that make businesses faster, leaner, and easier to grow. With a PhD in Aerospace Engineering, I'm trained to solve complex problems and deliver real-world results that keep working long after delivery.
+                        </p>
+                        <p class="about-closing">
+                            I focus on clear solutions, fast execution, and systems that keep working long after delivery. Let's make your coaching business run smarter. ⭐
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pain-points">
+            <div class="container">
+                <h2>Does This Sound Familiar?</h2>
+                <p class="subtitle">You're passionate about helping clients achieve their goals, but you're spending more time on busywork than actual coaching.</p>
+                
+                <div class="pain-grid">
+                    <div class="pain-card">
+                        <div class="icon">😵</div>
+                        <h3>Drowning in Client Onboarding</h3>
+                        <p>Sending welcome emails, intake forms, scheduling calls, and setting up client portals takes hours for each new client.</p>
+                    </div>
+                    <div class="pain-card">
+                        <div class="icon">🔄</div>
+                        <h3>Repeating the Same Content</h3>
+                        <p>You're manually posting the same insights across Instagram, LinkedIn, email newsletters, and your course platform.</p>
+                    </div>
+                    <div class="pain-card">
+                        <div class="icon">📧</div>
+                        <h3>Manual Follow-ups & Check-ins</h3>
+                        <p>Tracking client progress, sending reminder emails, and managing accountability check-ins is eating up your day.</p>
+                    </div>
+                    <div class="pain-card">
+                        <div class="icon">📊</div>
+                        <h3>Data Scattered Everywhere</h3>
+                        <p>Client information is spread across spreadsheets, email, and multiple platforms—making it hard to track progress.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions">
+            <div class="container">
+                <h2>How AI Automation Transforms Your Coaching Business</h2>
+                
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <h3>🤖 Automated Client Onboarding</h3>
+                        <p>New clients get instantly welcomed with personalized sequences that guide them through intake forms, schedule their first call, and set up their client portal—all while you sleep.</p>
+                        <ul class="benefit-list">
+                            <li>Instant welcome sequences</li>
+                            <li>Automated scheduling links</li>
+                            <li>Client portal setup</li>
+                            <li>Progress tracking dashboards</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>📱 Content Distribution Engine</h3>
+                        <p>Create your content once, then watch it automatically flow to Instagram, LinkedIn, your email list, and course platform—perfectly formatted for each channel.</p>
+                        <ul class="benefit-list">
+                            <li>Multi-platform publishing</li>
+                            <li>Platform-specific formatting</li>
+                            <li>Automated scheduling</li>
+                            <li>Engagement tracking</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>💬 Smart Client Communication</h3>
+                        <p>AI-powered systems handle routine check-ins, progress reminders, and follow-ups, while flagging clients who need your personal attention.</p>
+                        <ul class="benefit-list">
+                            <li>Automated check-in sequences</li>
+                            <li>Progress milestone celebrations</li>
+                            <li>Smart escalation alerts</li>
+                            <li>Personalized follow-ups</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>📈 Unified Client Dashboard</h3>
+                        <p>All client data, progress metrics, and communication history in one place—giving you instant insights to provide better coaching.</p>
+                        <ul class="benefit-list">
+                            <li>Centralized client profiles</li>
+                            <li>Progress visualization</li>
+                            <li>Communication history</li>
+                            <li>Performance analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Scale Your Coaching Impact?</h2>
+                <p>Book a free 20-minute coaching automation audit. I'll analyze your current workflow and show you exactly where automation can save you the most time.</p>
+                <a href="https://cal.com/katie-reichl/coaches-automation-audit" target="_blank" class="cta-button">Book Your Free Coaching Automation Audit</a>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>Prefer to Send a Message?</h2>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Coaching Niche/Business *</label>
+                        <input type="text" id="business" name="business" placeholder="e.g., Life Coach, Business Coach, Health Coach" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-type">What are you looking to automate?</label>
+                        <select id="project-type" name="project-type">
+                            <option value="">Select an option</option>
+                            <option value="client-onboarding">Client Onboarding & Management</option>
+                            <option value="content-distribution">Content Creation & Distribution</option>
+                            <option value="email-follow-ups">Email Sequences & Follow-ups</option>
+                            <option value="scheduling-booking">Scheduling & Booking Systems</option>
+                            <option value="course-delivery">Course/Program Delivery</option>
+                            <option value="other">Other/Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your biggest time-consuming tasks as a coach..." required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="cta-button">Send Message</button>
+                        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+                            Prefer to talk? <a href="https://cal.com/katie-reichl/coaches-automation-audit" target="_blank" style="color: #2a4d7a;">Book a free coaching automation audit</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/katiereichl/" target="_blank" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/capraflow/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p>&copy; 2025 CapraFlow. Streamline Your Work.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            try {
+                // Your actual Worker URL
+                const response = await fetch('https://capraflow-contact-form.reichl-dan.workers.dev', {
+                    method: 'POST',
+                    body: new FormData(this)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert(result.message);
+                    this.reset();
+                } else {
+                    alert(result.error || 'Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Network error. Please try again.');
+            } finally {
+                // Restore button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
