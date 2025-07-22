@@ -1,0 +1,5 @@
+{
+    "folderId": "1Gc7hAc3y0yd3KJ3PTI0RCAD-1ynOeOmE",
+    "fileName": "My New Document",
+    "fileContent": "<html><body><h1>Hello World</h1><p>This is my content.</p></body></html>"
+}
