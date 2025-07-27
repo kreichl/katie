@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Styles for layout and UI -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 12px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 14px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    small {
+      color: #555;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .intro {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .bid-box {
+      background: #f2f2f2;
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .message.error {
+      color: red;
+    }
+
+    .message.success {
+      color: green;
+    }
+
+    .calculated-values {
+      font-size: 13px;
+      color: #333;
+      margin-top: 8px;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #555;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin-left: 10px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .button-wrapper {
+      display: inline-flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Form heading and instructions -->
+  <h2>Generate Payments</h2>
+
+  <p class="intro">
+    Use this form to split a subcontractor’s total bid into multiple payments.
+    You can break down the total amount either by fixed dollar amounts or by percentage.
+  </p>
+
+  <!-- Display bid amount from Apps Script -->
+  <div class="bid-box">
+    <strong>Bid Amount:</strong> $<span id="bidAmount"><?= bidAmount.toFixed(2) ?></span>
+  </div>
+
+  <!-- Inputs: Number of payments, split type, payment values -->
+  <label for="numPayments">Number of Payments:</label>
+  <input type="number" id="numPayments" name="numPayments" min="1" required>
+  <small>e.g. 2 if you want to split into two payments: 50% upfront, 50% on completion</small>
+
+  <label for="splitType">Split Type:</label>
+  <select id="splitType" name="splitType">
+    <option value="amount">Amount ($)</option>
+    <option value="percent">Percent (%)</option>
+  </select>
+  <small>
+    <b>Amount:</b> Enter the dollar value of each payment (e.g. <code>2000, 3000</code>)<br>
+    <b>Percent:</b> Enter percentages that add up to 100% (e.g. <code>50, 50</code>)
+  </small>
+
+  <label for="values">Payment Values:</label>
+  <input type="text" id="values" name="values" placeholder="e.g. 2000, 3000 or 50, 50" required>
+  <small>Enter values separated by commas, matching the number of payments above</small>
+
+  <!-- Live calculated preview -->
+  <div class="calculated-values" id="calculatedOutput"></div>
+
+  <!-- Inline message for errors or success -->
+  <div id="messageBox" class="message"></div>
+
+  <!-- Submit button with spinner next to it -->
+  <div class="button-wrapper">
+    <button id="submitBtn" onclick="submitForm()">Submit</button>
+    <div class="spinner hidden" id="submitSpinner"></div>
+  </div>
+
+  <!-- Script section: form logic -->
+  <script>
+    // Parse bid amount
+    const bidAmount = parseFloat(document.getElementById("bidAmount").innerText.replace(/[$,]/g, ''));
+
+    // Update preview when input changes
+    document.getElementById("values").addEventListener("input", updateCalculatedValues);
+    document.getElementById("splitType").addEventListener("change", updateCalculatedValues);
+
+    /**
+     * Updates previewed calculations based on split type
+     */
+    function updateCalculatedValues() {
+      const type = document.getElementById("splitType").value;
+      const values = document.getElementById("values").value.trim().split(",").map(v => parseFloat(v.trim()));
+      const outputDiv = document.getElementById("calculatedOutput");
+
+      if (values.some(isNaN)) {
+        outputDiv.innerHTML = "";
+        return;
+      }
+
+      if (type === "percent") {
+        const amounts = values.map(p => ((p / 100) * bidAmount).toFixed(2));
+        outputDiv.innerHTML = "Calculated amounts: " + amounts.map((amt) => `$${amt}`).join(", ");
+      } else if (type === "amount") {
+        const total = values.reduce((a, b) => a + b, 0);
+        const match = Math.abs(total - bidAmount) < 0.01;
+        outputDiv.innerHTML = `Entered total: $${total.toFixed(2)}${match ? '' : ` <span style="color:red">(does not match bid amount)</span>`}`;
+      } else {
+        outputDiv.innerHTML = "";
+      }
+    }
+
+    /**
+     * Display message below the form
+     */
+    function showMessage(msg, type) {
+      const box = document.getElementById("messageBox");
+      box.innerText = msg;
+      box.className = "message " + type;
+    }
+
+    /**
+     * Handles form submission with validation, loading feedback, and success messaging
+     */
+    function submitForm() {
+      const numPayments = parseInt(document.getElementById("numPayments").value, 10);
+      const splitType = document.getElementById("splitType").value;
+      const valuesInput = document.getElementById("values").value.trim();
+      const values = valuesInput.split(",").map(v => parseFloat(v.trim()));
+
+      // Basic validations
+      if (values.length !== numPayments) {
+        showMessage(`You entered ${values.length} values, but expected ${numPayments}.`, "error");
+        return;
+      }
+
+      if (values.some(isNaN)) {
+        showMessage("All payment values must be numbers.", "error");
+        return;
+      }
+
+      if (splitType === "percent") {
+        const total = values.reduce((a, b) => a + b, 0);
+        if (Math.abs(total - 100) > 0.1) {
+          showMessage(`Percent values must add up to 100%. Current total: ${total.toFixed(1)}%.`, "error");
+          return;
+        }
+      }
+
+      // Disable submit + show spinner
+      const submitBtn = document.getElementById("submitBtn");
+      const spinner = document.getElementById("submitSpinner");
+      submitBtn.disabled = true;
+      spinner.classList.remove("hidden");
+
+      // Prepare payload and call Apps Script
+      const data = {
+        numPayments: numPayments,
+        splitType: splitType,
+        values: values.join(",")
+      };
+
+      google.script.run
+        .withSuccessHandler(() => {
+          showMessage("✅ Payment data added to Scheduled Payments.", "success");
+
+          setTimeout(() => {
+            google.script.host.close();
+          }, 3000);
+        })
+        .withFailureHandler(() => {
+          showMessage("An error occurred. Please try again.", "error");
+          submitBtn.disabled = false;
+          spinner.classList.add("hidden");
+        })
+        .processSidebarForm(data);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "timeZone": "America/Chicago",
+  "dependencies": {
+  },
+  "webapp": {
+    "access": "ANYONE",
+    "executeAs": "USER_ACCESSING"
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/script.container.ui", "https://www.googleapis.com/auth/userinfo.email"],
+  "runtimeVersion": "V8"
+}

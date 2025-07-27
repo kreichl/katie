@@ -168,3 +168,4 @@ upwork_scrape/html_cache/*
 
 *token.json
 google_apis_test/credentials.json
+.clasp.json
